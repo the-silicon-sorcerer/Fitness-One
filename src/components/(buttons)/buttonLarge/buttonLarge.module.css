@@ -1,0 +1,16 @@
+.button {
+  width: 100%;
+  height: var(--elementFixedHigh);
+  background-color: var(--bg-600);
+  padding: 15px 0px;
+  border-radius: var(--borderRadius);
+  border: none;
+}
+
+.button > p {
+  color: var(--bg-900);
+}
+
+.button:active {
+  background-color: var(--btn-active);
+}

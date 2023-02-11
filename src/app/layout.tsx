@@ -1,10 +1,10 @@
 import AuthProvider from "../utils/authProvider";
 import { TrpcProvider } from "../utils/trpcProvider";
-import { Inter } from "@next/font/google";
-
-const inter = Inter();
+import localFont from "@next/font/local";
 
 import "../styles/globals.css";
+
+const inter = localFont({ src: "../../public/fonts/inter.ttf" });
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (

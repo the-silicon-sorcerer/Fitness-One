@@ -1,5 +1,22 @@
 :root {
-  --background: rgb(46, 46, 69);
+  /* NEUTRAL COLORS */
+
+  --bg-900: #1c1c1e;
+  --bg-800: #2f2e2e;
+  --bg-700: #3d3d3d;
+  --bg-600: #919192;
+  --bg-100: #ffffff;
+
+  /* STATES  */
+
+  --btn-active: #818181;
+
+  /* STRUCTURE SETTINGS */
+
+  --pagePadding: 0px 24px;
+  --elementMarginBottom: 20px;
+  --borderRadius: 10px;
+  --elementFixedHigh: 50px;
 }
 
 /* CSS RESET */
@@ -8,12 +25,51 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font: inherit;
+}
+
+/* FONTS */
+
+/* GLOBAL STYLES  */
+
+html {
+  color-scheme: dark light;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  padding: var(--pagePadding);
+  background-color: var(--bg-900);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--bg-600);
+}
+
+p {
+  color: var(--bg-600);
+}
+
+/* UTILITY CLASSES */
+
+.underline {
+  text-decoration: underline;
 }
 
 /* HEADING STYLES */
 
 h1 {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
@@ -21,7 +77,6 @@ h1 {
 }
 
 h2 {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
@@ -29,7 +84,6 @@ h2 {
 }
 
 h3 {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
@@ -37,7 +91,6 @@ h3 {
 }
 
 h4 {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -45,7 +98,6 @@ h4 {
 }
 
 h5 {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -53,7 +105,6 @@ h5 {
 }
 
 h6 {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -63,7 +114,6 @@ h6 {
 /* BODY FONT STYLES */
 
 .body-ExtraLarge {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -71,7 +121,6 @@ h6 {
 }
 
 .body-Large {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -79,7 +128,6 @@ h6 {
 }
 
 .body-Medium {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -87,7 +135,6 @@ h6 {
 }
 
 .body-Small {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -95,47 +142,41 @@ h6 {
 }
 
 .body-ExtraSmall {
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 125%;
 }
 
-.body-bold-ExtraLarge {
-  font-family: "Inter";
+.body-B-ExtraLarge {
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
   line-height: 125%;
 }
 
-.body-bold-Large {
-  font-family: "Inter";
+.body-B-Large {
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 125%;
 }
 
-.body-bold-Medium {
-  font-family: "Inter";
+.body-B-Medium {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 125%;
 }
 
-.body-bold-Small {
-  font-family: "Inter";
+.body-B-Small {
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 125%;
 }
 
-.body-bold-ExtraSmall {
-  font-family: "Inter";
+.body-B-ExtraSmall {
   font-style: normal;
   font-weight: 700;
   font-size: 12px;

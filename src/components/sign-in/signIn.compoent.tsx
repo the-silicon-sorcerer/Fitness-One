@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 
 const SignIn = ({ provider }: { provider: string }) => {
   return (
-    <button onClick={() => signIn(provider)}>{`Sign in with ${provider
+    <button onClick={() => void signIn(provider)}>{`Sign in with ${provider
       .charAt(0)
       .toLocaleUpperCase()
       .concat(provider.slice(1))}`}</button>

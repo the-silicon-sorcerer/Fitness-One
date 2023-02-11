@@ -1,0 +1,12 @@
+.container {
+  height: var(--elementFixedHigh);
+  background-color: var(--bg-800);
+  border-radius: var(--borderRadius);
+  display: flex;
+  align-items: center;
+}
+
+.container > input {
+  border: none;
+  background-color: var(--bg-800);
+}
