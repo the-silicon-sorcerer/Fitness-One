@@ -1,7 +1,6 @@
 import { Montserrat } from "@next/font/google";
-import localFont from "@next/font/local";
 
-const montserrat = localFont({ src: "../../../public/fonts/montserrat.ttf" });
+const montserrat = Montserrat();
 
 interface LogoProps {
   size: string;
@@ -17,6 +16,7 @@ const Logo = ({ size, color }: LogoProps) => {
         color: color,
         fontWeight: "900",
         letterSpacing: "-0.08em",
+        fontStyle: "italic",
       }}
     >
       FITNESS ONE

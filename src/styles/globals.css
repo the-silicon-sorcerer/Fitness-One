@@ -61,10 +61,28 @@ p {
   color: var(--bg-600);
 }
 
+svg {
+  fill: var(--bg-600);
+}
+
+input {
+  color: var(--bg-600);
+  width: 100%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  outline: none;
+}
+
 /* UTILITY CLASSES */
 
 .underline {
   text-decoration: underline;
+}
+
+.bold {
+  font-weight: 400;
 }
 
 /* HEADING STYLES */

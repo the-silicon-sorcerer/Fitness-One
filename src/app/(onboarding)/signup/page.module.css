@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0x;
+}
+
+.options > * {
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.terms {
+  position: absolute;
+  bottom: 40px;
+}
+
+.terms > * {
+  margin-top: 20px;
+}

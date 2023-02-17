@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container > p {
+  margin: 0px 10px;
+}
+
+.container > hr {
+  height: 1px;
+  flex: 1;
+}

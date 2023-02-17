@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
+import { forwardRef } from "react";
 
 import style from "./textInput.module.css";
-import SvgIcon from "../../svgIcon/svgIcon.component";
 
 interface TextInputProps {
   ref: React.MutableRefObject<HTMLInputElement>;
@@ -11,13 +11,18 @@ interface TextInputProps {
   Icon: any;
 }
 
-const TextInput = ({ ref, placeholder, Icon }: TextInputProps) => {
-  return (
-    <div className={style.container}>
-      <SvgIcon Icon={Icon} size="30px" />
-      <input ref={ref} type={"text"} placeholder={placeholder} />
-    </div>
-  );
-};
+const TextInput = forwardRef(
+  (
+    { placeholder, Icon }: TextInputProps,
+    ref: React.ForwardedRef<HTMLInputElement>
+  ) => {
+    return (
+      <div className={style.container}>
+        <Icon />
+        <input ref={ref} type={"text"} placeholder={placeholder} />
+      </div>
+    );
+  }
+);
 
 export default TextInput;

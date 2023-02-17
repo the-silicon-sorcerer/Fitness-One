@@ -1,9 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import ButtonLarge from "../../components/(buttons)/buttonLarge/buttonLarge.component";
 import Logo from "../../components/logo/logo.component";
+import HaveAccount from "../../components/haveAccount/haveAccount.component";
+
 import style from "./page.module.css";
-import { useRouter } from "next/navigation";
 
 const SplashScreen = () => {
   const router = useRouter();
@@ -14,9 +17,7 @@ const SplashScreen = () => {
       <Logo color={"var(--bg-600)"} size={"36px"} />
       <div className={style.subContainer}>
         <ButtonLarge onClick={createAccount} text="Create Account" />
-        <p className="body-B-ExtraSmall">
-          Already have an account? <span className="underline">Log in</span>
-        </p>
+        <HaveAccount />
       </div>
     </div>
   );
