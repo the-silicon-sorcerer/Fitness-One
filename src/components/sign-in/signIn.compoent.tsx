@@ -14,7 +14,7 @@ interface SignInProps {
 const SignIn = ({ provider, Icon, callback }: SignInProps) => {
   const router = useRouter();
 
-  const { data, status } = useSession();
+  const { status } = useSession();
 
   const logIn = () => {
     if (status === "authenticated") {

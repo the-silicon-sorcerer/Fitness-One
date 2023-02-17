@@ -26,12 +26,17 @@ const SignUp = () => {
   const emailRef = useRef({} as HTMLInputElement);
   const emailSchema = z.string().email();
 
+  const callback = "/onboarding";
+
   const submitEmail = () => {
     if (status === "authenticated") {
       return void router.push("/");
     }
     if (emailSchema.safeParse(emailRef.current.value).success) {
-      signIn("email", { callbackUrl: "/test", email: emailRef.current.value });
+      void signIn("email", {
+        callbackUrl: callback,
+        email: emailRef.current.value,
+      });
     }
   };
 
@@ -42,8 +47,8 @@ const SignUp = () => {
         <TextInput Icon={MainIcon} ref={emailRef} placeholder="Email" />
         <ButtonLarge onClick={() => submitEmail()} text="Create Account" />
         <ContinueWith />
-        <SignIn Icon={GoogleIcon} provider="google" callback="/" />
-        <SignIn Icon={FacebookIcon} provider="facebook" callback="/" />
+        <SignIn Icon={GoogleIcon} provider="google" callback={callback} />
+        <SignIn Icon={FacebookIcon} provider="facebook" callback={callback} />
       </div>
       <div className={style.terms}>
         <TermsText />
