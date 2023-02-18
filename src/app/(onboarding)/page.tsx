@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 
 import ButtonLarge from "../../components/(buttons)/buttonLarge/buttonLarge.component";
-import Logo from "../../components/logo/logo.component";
-import HaveAccount from "../../components/haveAccount/haveAccount.component";
+import Logo from "../../components/(elements)/logo/logo.component";
+import HaveAccount from "../../components/(elements)/haveAccount/haveAccount.component";
 
 import style from "./page.module.css";
 

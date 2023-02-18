@@ -75,6 +75,11 @@ input {
   outline: none;
 }
 
+::placeholder {
+  color: var(--bg-600);
+  opacity: 1;
+}
+
 /* UTILITY CLASSES */
 
 .underline {

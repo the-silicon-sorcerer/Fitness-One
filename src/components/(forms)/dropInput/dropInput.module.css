@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  background-color: var(--bg-800);
+  border-radius: var(--borderRadius);
+  display: grid;
+  row-gap: 20px;
+  grid-column: 1fr;
+  padding: 15px 20px;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}
+
+.text > p {
+  margin-left: 10px;
+}
+
+.dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option {
+  background-color: var(--bg-700);
+  border: 2px solid var(--bg-700);
+  border-radius: var(--borderRadius);
+  min-width: 40%;
+  padding: 10px 0px;
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+}

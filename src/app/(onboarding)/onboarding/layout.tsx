@@ -49,7 +49,7 @@ interface onboardingValue {
   progressDispatch: Dispatch<onboardingAction>;
 }
 
-const OnboaringContext = createContext({} as onboardingValue);
+export const OnboaringContext = createContext({} as onboardingValue);
 
 const isPageOneVals = (p: payload): p is pageOneVals => {
   return (p as pageOneVals).gender !== undefined;
@@ -75,7 +75,7 @@ const onboardingReducer = (
           weight: payload.weight,
           height: payload.height,
           experience: payload.experience,
-          currentPage: 1,
+          currentPage: 2,
         };
       }
     case "PAGE_TWO_INSERT":
@@ -106,7 +106,7 @@ const initalState: onboardingState = {
   fitnessGoal: undefined,
   nutritionGoal: undefined,
   weightGoal: undefined,
-  currentPage: 3,
+  currentPage: 1,
 };
 
 const OnboardingProvider = ({ children }: { children: React.ReactNode }) => {

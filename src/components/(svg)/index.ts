@@ -6,3 +6,4 @@ export { default as NextIcon } from "./nextIcon.svg";
 export { default as BackIcon } from "./backIcon.svg";
 export { default as BackIconSmall } from "./backIconSmall.svg";
 export { default as NextIconSmall } from "./nextIconSmall.svg";
+export { default as DropIcon } from "./dropIcon.svg";
