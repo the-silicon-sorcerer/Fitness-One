@@ -1,17 +1,53 @@
+"use client";
+
+import { Context, useContext } from "react";
+
+import { ProgressContextValue } from "../../../types/progressContext";
 import { BackIconSmall } from "../../(svg)";
 import { NextIconSmall } from "../../(svg)";
 
 import style from "./progressFooter.module.css";
 
-const ProgressFooter = () => {
+interface ProgressFooterProps {
+  context: Context<ProgressContextValue>;
+  events: number;
+}
+
+const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
+  const { progressData, progressDispatch } = useContext(context);
+
+  const onPrevious = () => {
+    if (progressData.currentPage > 1) {
+      progressDispatch({
+        payload: progressData.currentPage - 1,
+        type: "PAGE_CHANGE",
+      });
+    }
+  };
+
+  const onContinue = () => {
+    if (progressData.currentPage < events) {
+      progressDispatch({
+        payload: progressData.currentPage + 1,
+        type: "PAGE_CHANGE",
+      });
+    }
+  };
+
   return (
     <div className={style.footer}>
-      <div className={style.previous}>
-        <BackIconSmall style={{ fill: "var(--bg-600)" }} />
-        <p className="body-B-Small">Previous</p>
-      </div>
-      <div className={style.next}>
-        <p className="body-B-Medium">Continue</p>
+      {progressData.currentPage > 1 ? (
+        <div className={style.previous} onClick={() => onPrevious()}>
+          <BackIconSmall style={{ fill: "var(--bg-600)" }} />
+          <p className="body-B-Small">Previous</p>
+        </div>
+      ) : (
+        <div className={style.previous}></div>
+      )}
+      <div className={style.next} onClick={() => onContinue()}>
+        <p className="body-B-Medium">
+          {progressData.currentPage === events ? "Finish" : "Continue"}
+        </p>
         <NextIconSmall style={{ fill: "var(--bg-800)" }} />
       </div>
     </div>

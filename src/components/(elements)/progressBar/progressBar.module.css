@@ -14,7 +14,3 @@
   border-radius: var(--borderRadius);
   flex: 1;
 }
-
-.indicator:nth-child(1) {
-  background-color: var(--bg-600);
-}
