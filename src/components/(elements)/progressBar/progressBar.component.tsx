@@ -14,7 +14,7 @@ const ProgressBar = ({ events, context }: ProgressBarProps) => {
   const { progressData } = useContext(context);
 
   const createEvents = () => {
-    let indicators = [];
+    const indicators = [];
     for (let i = 1; i <= events; i++) {
       if (i <= progressData.currentPage) {
         indicators.push(
