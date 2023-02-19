@@ -1,0 +1,15 @@
+.container {
+  height: var(--elementFixedHigh);
+  width: 100%;
+  background-color: var(--bg-800);
+  border-radius: var(--borderRadius);
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.container > input {
+  margin-left: 10px;
+  border: none;
+  background-color: var(--bg-800);
+}

@@ -1,71 +1,45 @@
 import { createContext, useReducer } from "react";
 import type { Dispatch } from "react";
-import type { SetPage, progressAction } from "../types/progressContext";
+import type { SetPage, ProgressType } from "../types/progressContext";
 
-export type gender = "MALE" | "FEMALE" | "OTHER";
-export type experience = "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
-export type fitnessGoal = "SIZE" | "STRENGTH";
-export type nutritionGoal = "BULKING" | "CUTTING";
+export type Gender = "MALE" | "FEMALE" | "OTHER";
+export type Experience = "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
+export type FitnessGoal = "SIZE" | "STRENGTH";
+export type NutritionGoal = "BULKING" | "CUTTING";
 
-interface onboardingState {
-  gender?: gender;
+interface OnboardingState {
+  gender?: Gender;
   age?: number;
   weight?: number;
   height?: number;
-  experience?: experience;
-  fitnessGoal?: fitnessGoal;
-  nutritionGoal?: nutritionGoal;
+  experience?: Experience;
+  fitnessGoal?: FitnessGoal;
+  nutritionGoal?: NutritionGoal;
   weightGoal?: number;
   currentPage: number;
 }
 
-interface pageOneVals {
-  gender: gender;
-  age: number;
-  weight: number;
-  height: number;
-  experience: experience;
-}
-
-interface pageTwoVals {
-  fitnessGoal: fitnessGoal;
-  nutritionGoal: nutritionGoal;
-  weightGoal: number;
-}
-
-type action = "PAGE_TWO_INSERT" | progressAction;
-
-type payload = pageOneVals | pageTwoVals | SetPage;
-
-interface onboardingAction {
-  type: action;
-  payload: payload;
+interface OnboardingAction {
+  type: ProgressType;
+  payload: OnboardingState | SetPage;
 }
 
 interface onboardingValue {
-  progressData: onboardingState;
-  progressDispatch: Dispatch<onboardingAction>;
+  progressData: OnboardingState;
+  progressDispatch: Dispatch<OnboardingAction>;
 }
 
 export const OnboaringContext = createContext({} as onboardingValue);
 
-const isPageOneVals = (p: payload): p is pageOneVals => {
-  return (p as pageOneVals).gender !== undefined;
-};
-
-const isPageTwoVals = (p: payload): p is pageTwoVals => {
-  return (p as pageTwoVals).fitnessGoal !== undefined;
-};
-
 const onboardingReducer = (
-  state: onboardingState,
-  action: onboardingAction
+  state: OnboardingState,
+  action: OnboardingAction
 ) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "PAGE_ONE_INSERT":
-      if (isPageOneVals(payload)) {
+    case "SET_DATA":
+      if (typeof payload !== "number") {
         return {
           ...state,
           gender: payload.gender,
@@ -73,19 +47,12 @@ const onboardingReducer = (
           weight: payload.weight,
           height: payload.height,
           experience: payload.experience,
-          currentPage: 2,
-        };
-      }
-    case "PAGE_TWO_INSERT":
-      if (isPageTwoVals(payload)) {
-        return {
-          ...state,
           fitnessGoal: payload.fitnessGoal,
           nutritionGoal: payload.nutritionGoal,
           weightGoal: payload.weightGoal,
-          currentPage: 3,
         };
       }
+
     case "PAGE_CHANGE":
       if (typeof payload === "number") {
         return { ...state, currentPage: payload };
@@ -95,7 +62,7 @@ const onboardingReducer = (
   }
 };
 
-const initalState: onboardingState = {
+const initalState: OnboardingState = {
   gender: undefined,
   age: undefined,
   weight: undefined,

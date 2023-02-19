@@ -1,14 +1,9 @@
 "use client";
 
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useRef, useEffect, useState } from "react";
 
 import { UserIcon } from "../../../components/(svg)";
-import {
-  OnboaringContext,
-  gender,
-  experience,
-} from "../../../contexts/onboardingContext";
-import InputVal from "../../../types/inputVal";
+import { OnboaringContext } from "../../../contexts/onboardingContext";
 import DropInput from "../../../components/(forms)/dropInput/dropInput.component";
 import TextInput from "../../../components/(forms)/textInput/textInput.component";
 import ProgressHeader from "../../../components/(elements)/progressHeader/progressHeader.component";
@@ -17,38 +12,13 @@ import style from "./page.module.css";
 
 const Onboarding = () => {
   const { progressData, progressDispatch } = useContext(OnboaringContext);
-  const genderRef = useRef<gender>("" as gender);
-  const ageRef = useRef({} as InputVal);
-  const heightRef = useRef({} as InputVal);
-  const weightRef = useRef({} as InputVal);
-  const experienceRef = useRef<experience>({} as experience);
+  const [payload, setPayload] = useState(progressData);
 
   useEffect(() => {
-    if (progressData.currentPage === 2) {
-      progressDispatch({
-        type: "PAGE_ONE_INSERT",
-        payload: {
-          age: Number(ageRef.current.inputVal),
-          weight: Number(weightRef.current.inputVal),
-          height: Number(heightRef.current.inputVal),
-          gender: genderRef.current,
-          experience: experienceRef.current,
-        },
-      });
-    }
-    if (progressData.currentPage === 3) {
-      progressDispatch({
-        type: "PAGE_TWO_INSERT",
-        payload: {
-          age: 10,
-          weight: 10,
-          height: 10,
-          gender: genderRef.current,
-          experience: "BEGINNER",
-        },
-      });
-    }
-  }, [progressData.currentPage]);
+    progressDispatch({ type: "SET_DATA", payload: payload });
+  }, [payload]);
+
+  console.log(progressData);
 
   const heading = "Basic Information";
   const subheading =
@@ -59,19 +29,49 @@ const Onboarding = () => {
       <div className={style.container}>
         <ProgressHeader heading={heading} subHeading={subheading} />
         <DropInput
+          setState={setPayload}
+          currState={payload}
+          context={OnboaringContext}
           options={["Male", "Female", "Other"]}
           Icon={UserIcon}
           placeholder="Gender"
-          ref={genderRef}
+          field="gender"
         />
-        <TextInput ref={ageRef} Icon={UserIcon} placeholder="Age" />
-        <TextInput ref={heightRef} Icon={UserIcon} placeholder="Height" />
-        <TextInput ref={weightRef} Icon={UserIcon} placeholder="Weight" />
+        <TextInput
+          currState={payload}
+          setState={setPayload}
+          context={OnboaringContext}
+          type="number"
+          Icon={UserIcon}
+          placeholder="Age"
+          field="age"
+        />
+        <TextInput
+          currState={payload}
+          setState={setPayload}
+          context={OnboaringContext}
+          type="number"
+          Icon={UserIcon}
+          placeholder="Height (in)"
+          field="height"
+        />
+        <TextInput
+          currState={payload}
+          setState={setPayload}
+          context={OnboaringContext}
+          type="number"
+          Icon={UserIcon}
+          placeholder="Weight (lbs)"
+          field="weight"
+        />
         <DropInput
+          setState={setPayload}
+          currState={payload}
+          context={OnboaringContext}
           options={["Beginner", "Intermediate", "Advanced"]}
           Icon={UserIcon}
           placeholder="Experience"
-          ref={experienceRef}
+          field="experience"
         />
         <div className={style.buffer}></div>
       </div>

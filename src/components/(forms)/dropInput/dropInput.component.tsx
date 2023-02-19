@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, forwardRef, RefObject, ForwardedRef } from "react";
+import { useState, useContext, useEffect } from "react";
+import type { Dispatch, SetStateAction, Context } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { DropIcon } from "../../(svg)";
@@ -11,65 +12,72 @@ interface DropInputProps {
   Icon: any;
   placeholder: string;
   options: string[];
+  field: string;
+  currState: object | { [key: string]: string };
+  setState: Dispatch<SetStateAction<any>>;
+  context: Context<any>;
 }
 
-const DropInput = forwardRef(
-  (
-    { Icon, placeholder, options }: DropInputProps,
-    ref: ForwardedRef<any> | React.MutableRefObject<any>
-  ) => {
-    const [menuOpen, setMenu] = useState(false);
-    const [selected, setSelected] = useState<undefined | string>(undefined);
+const DropInput = ({
+  Icon,
+  placeholder,
+  options,
+  field,
+  currState,
+  setState,
+  context,
+}: DropInputProps) => {
+  const [menuOpen, setMenu] = useState(false);
+  const [selected, setSelected] = useState<undefined | string>(undefined);
+  const { progressData } = useContext(context);
+  const currVal = progressData[field as keyof typeof progressData];
 
-    function isCurrent<T>(
-      r: React.MutableRefObject<T> | ((instance: T | null) => void)
-    ): r is React.MutableRefObject<T> {
-      return (r as React.MutableRefObject<T>).current !== undefined;
-    }
-
-    const setRef = (
-      text: string | null,
-      ref: ForwardedRef<any> | React.MutableRefObject<any>
-    ) => {
-      const input = text!.toUpperCase();
-      if (isCurrent(ref!)) ref.current = input;
-    };
-
-    const generateOptions = options.map((text) => {
-      return (
-        <div
-          key={uuidv4()}
-          style={{
-            border: text === selected ? "2px solid var(--bg-600)" : undefined,
-          }}
-          className={style.option}
-          onClick={() => {
-            setSelected(text);
-            setRef(text, ref);
-          }}
-        >
-          <p className="body-B-Medium">{text}</p>
-        </div>
-      );
+  useEffect(() => {
+    options.forEach((text) => {
+      if (currVal && text.toLowerCase() === currVal.toLowerCase()) {
+        setSelected(text);
+      }
     });
+  }, []);
 
+  const onSelect = (text: string) => {
+    setState({ ...currState, [field]: text.toUpperCase() });
+  };
+
+  const generateOptions = options.map((text) => {
     return (
-      <div className={style.container}>
-        <div className={style.main} onClick={() => setMenu(!menuOpen)}>
-          <div className={style.text}>
-            <Icon />
-            <p className="body-B-Medium">{placeholder}</p>
-          </div>
-          <DropIcon
-            style={{ transform: menuOpen ? "rotate(180deg)" : undefined }}
-          />
-        </div>
-        {menuOpen ? (
-          <div className={style.dropdown}>{generateOptions}</div>
-        ) : null}
+      <div
+        key={uuidv4()}
+        style={{
+          border: text === selected ? "2px solid var(--bg-600)" : undefined,
+        }}
+        className={style.option}
+        onClick={() => {
+          setSelected(text);
+          onSelect(text);
+        }}
+      >
+        <p className="body-B-Medium">{text}</p>
       </div>
     );
-  }
-);
+  });
+
+  return (
+    <div className={style.container}>
+      <div className={style.main} onClick={() => setMenu(!menuOpen)}>
+        <div className={style.text}>
+          <Icon />
+          <p className="body-B-Medium">{placeholder}</p>
+        </div>
+        <DropIcon
+          style={{ transform: menuOpen ? "rotate(180deg)" : undefined }}
+        />
+      </div>
+      {menuOpen ? (
+        <div className={style.dropdown}>{generateOptions}</div>
+      ) : null}
+    </div>
+  );
+};
 
 export default DropInput;

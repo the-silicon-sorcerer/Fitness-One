@@ -1,47 +1,49 @@
 "use client";
 
 import React from "react";
-import { forwardRef, ForwardedRef } from "react";
+import { useRef, useEffect, useContext, useState } from "react";
+import type { Dispatch, SetStateAction, Context } from "react";
 
 import style from "./textInput.module.css";
 
 interface TextInputProps {
-  ref: ForwardedRef<any> | React.MutableRefObject<any>;
   placeholder: string;
   Icon: any;
+  type: "text" | "number";
+  field: string;
+  currState: object;
+  setState: Dispatch<SetStateAction<any>>;
+  context: Context<any>;
 }
 
-const TextInput = forwardRef(
-  ({ placeholder, Icon }: TextInputProps, ref: React.ForwardedRef<any>) => {
-    function isCurrent<T>(
-      r: React.MutableRefObject<T> | ((instance: T | null) => void)
-    ): r is React.MutableRefObject<T> {
-      return (r as React.MutableRefObject<T>).current !== undefined;
-    }
+const TextInput = ({
+  placeholder,
+  Icon,
+  type,
+  setState,
+  currState,
+  field,
+  context,
+}: TextInputProps) => {
+  const inpRef = useRef({} as HTMLInputElement);
+  const { progressData } = useContext(context);
+  const currVal: string = progressData[field as keyof typeof progressData];
 
-    const setRef = (
-      text: string | null,
-      ref: ForwardedRef<any> | React.MutableRefObject<any>
-    ) => {
-      const input = text!.toUpperCase();
-      if (isCurrent(ref!)) ref.current.inputVal = input;
-    };
+  const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...currState, [field]: e.target.value });
+  };
 
-    const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setRef(e.target.value, ref);
-    };
-
-    return (
-      <div className={style.container}>
-        <Icon />
-        <input
-          type={"text"}
-          placeholder={placeholder}
-          onChange={onChangeHandle}
-        />
-      </div>
-    );
-  }
-);
+  return (
+    <div className={style.container}>
+      <Icon />
+      <input
+        ref={inpRef}
+        onChange={onChangeHandle}
+        type={type}
+        placeholder={currVal ? currVal : placeholder}
+      />
+    </div>
+  );
+};
 
 export default TextInput;

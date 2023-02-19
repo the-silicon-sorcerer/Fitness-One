@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import z from "zod";
 
 import ButtonLarge from "../../../components/(buttons)/buttonLarge/buttonLarge.component";
-import TextInput from "../../../components/(forms)/textInput/textInput.component";
+import RefTextInput from "../../../components/(forms)/refTextInput/refTextInput.component";
 import ContinueWith from "../../../components/(elements)/continueWith/continue.component";
 import SignIn from "../../../components/(elements)/sign-in/signIn.compoent";
 import TermsText from "../../../components/(elements)/termsText/termsText.component";
@@ -43,8 +43,18 @@ const SignUp = () => {
   return (
     <div className={style.container}>
       <div className={style.options}>
-        <TextInput Icon={UserIcon} ref={nameRef} placeholder="Full name" />
-        <TextInput Icon={MainIcon} ref={emailRef} placeholder="Email" />
+        <RefTextInput
+          type="text"
+          Icon={UserIcon}
+          ref={nameRef}
+          placeholder="Full name"
+        />
+        <RefTextInput
+          type="text"
+          Icon={MainIcon}
+          ref={emailRef}
+          placeholder="Email"
+        />
         <ButtonLarge onClick={() => submitEmail()} text="Create Account" />
         <ContinueWith />
         <SignIn Icon={GoogleIcon} provider="google" callback={callback} />

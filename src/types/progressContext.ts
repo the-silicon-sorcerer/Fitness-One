@@ -2,16 +2,17 @@ import type { Dispatch } from "react";
 
 export type SetPage = number;
 
-export type progressAction = "PAGE_ONE_INSERT" | "PAGE_CHANGE";
+export type ProgressType = "SET_DATA" | "PAGE_CHANGE";
 
 interface ProgressAction {
-  type: progressAction;
+  type: ProgressType;
   payload: SetPage;
 }
 
 export interface ProgressContextValue {
   progressData: {
     currentPage: number;
+    [key: string]: string | number;
   };
   progressDispatch: Dispatch<ProgressAction>;
 }
