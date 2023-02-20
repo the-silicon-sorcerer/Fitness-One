@@ -1,3 +1,5 @@
+"use client";
+
 import { Context } from "react";
 import ProgressBar from "../../(elements)/progressBar/progressBar.component";
 import ProgressFooter from "../../(elements)/progressFooter/progressFooter.component";

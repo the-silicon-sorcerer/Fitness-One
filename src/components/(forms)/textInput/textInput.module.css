@@ -1,5 +1,4 @@
 .container {
-  height: var(--elementFixedHigh);
   width: 100%;
   background-color: var(--bg-800);
   border-radius: var(--borderRadius);

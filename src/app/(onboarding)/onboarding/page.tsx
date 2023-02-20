@@ -14,15 +14,21 @@ const Onboarding = () => {
   const { progressData, progressDispatch } = useContext(OnboaringContext);
   const [payload, setPayload] = useState(progressData);
 
+  console.log(progressData);
+
   useEffect(() => {
     progressDispatch({ type: "SET_DATA", payload: payload });
   }, [payload]);
 
-  console.log(progressData);
-
   const heading = "Basic Information";
   const subheading =
     "This data is used to better generate workouts and track progress.";
+
+  const heading2 = "Set Fitness Goals";
+  const subheading2 = "These can be changed at any time.";
+
+  const heading3 = "Account Setup Complete!";
+  const subheading3 = "Click finish to enter your dashboard.";
 
   if (progressData.currentPage === 1) {
     return (
@@ -79,6 +85,48 @@ const Onboarding = () => {
   }
 
   if (progressData.currentPage === 2) {
+    return (
+      <div className={style.container}>
+        <ProgressHeader heading={heading2} subHeading={subheading2} />
+        <TextInput
+          currState={payload}
+          setState={setPayload}
+          context={OnboaringContext}
+          type="number"
+          Icon={UserIcon}
+          placeholder="Target Weight"
+          field="weightGoal"
+        />
+        <DropInput
+          setState={setPayload}
+          currState={payload}
+          context={OnboaringContext}
+          options={["Strength", "Size"]}
+          Icon={UserIcon}
+          placeholder="Fitness Goal"
+          field="fitnessGoal"
+        />
+        <DropInput
+          setState={setPayload}
+          currState={payload}
+          context={OnboaringContext}
+          options={["Cutting", "Bulking", "Maintain"]}
+          Icon={UserIcon}
+          placeholder="Nutrition Goal"
+          field="nutritionGoal"
+        />
+
+        <div className={style.buffer}></div>
+      </div>
+    );
+  }
+
+  if (progressData.currentPage === 3) {
+    return (
+      <div className={style.finalContainer}>
+        <ProgressHeader heading={heading3} subHeading={subheading3} />
+      </div>
+    );
   }
 };
 

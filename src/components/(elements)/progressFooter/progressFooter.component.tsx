@@ -18,6 +18,7 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
 
   const onPrevious = () => {
     if (progressData.currentPage > 1) {
+      if (typeof window !== "undefined") window.scrollTo(0, 0);
       progressDispatch({
         payload: progressData.currentPage - 1,
         type: "PAGE_CHANGE",
@@ -27,6 +28,7 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
 
   const onContinue = () => {
     if (progressData.currentPage < events) {
+      if (typeof window !== "undefined") window.scrollTo(0, 0);
       progressDispatch({
         payload: progressData.currentPage + 1,
         type: "PAGE_CHANGE",

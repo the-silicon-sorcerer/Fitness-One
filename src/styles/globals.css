@@ -55,6 +55,7 @@ body {
 }
 
 body {
+  position: relative;
   min-height: 100vh;
   padding: var(--pagePadding);
   background-color: var(--bg-900);

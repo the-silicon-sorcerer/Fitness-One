@@ -36,6 +36,7 @@ const TextInput = ({
   return (
     <div className={style.container}>
       <Icon />
+
       <input
         ref={inpRef}
         onChange={onChangeHandle}

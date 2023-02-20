@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useReducer } from "react";
 import type { Dispatch } from "react";
 import type { SetPage, ProgressType } from "../types/progressContext";
