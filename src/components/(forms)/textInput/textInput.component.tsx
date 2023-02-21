@@ -25,12 +25,15 @@ const TextInput = ({
   field,
   context,
 }: TextInputProps) => {
-  const inpRef = useRef({} as HTMLInputElement);
   const { progressData } = useContext(context);
   const currVal: string = progressData[field as keyof typeof progressData];
 
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...currState, [field]: e.target.value });
+    const val = e.target.value;
+    if (Number(val)) {
+      return setState({ ...currState, [field]: Number(val) });
+    }
+    setState({ ...currState, [field]: val });
   };
 
   return (
@@ -38,7 +41,6 @@ const TextInput = ({
       <Icon />
 
       <input
-        ref={inpRef}
         onChange={onChangeHandle}
         type={type}
         placeholder={currVal ? currVal : placeholder}

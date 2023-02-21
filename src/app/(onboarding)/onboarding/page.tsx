@@ -25,7 +25,7 @@ const Onboarding = () => {
     "This data is used to better generate workouts and track progress.";
 
   const heading2 = "Set Fitness Goals";
-  const subheading2 = "These can be changed at any time.";
+  const subheading2 = "You can change your goals at any time";
 
   const heading3 = "Account Setup Complete!";
   const subheading3 = "Click finish to enter your dashboard.";
@@ -34,14 +34,23 @@ const Onboarding = () => {
     return (
       <div className={style.container}>
         <ProgressHeader heading={heading} subHeading={subheading} />
-        <DropInput
-          setState={setPayload}
+        <TextInput
           currState={payload}
+          setState={setPayload}
           context={OnboaringContext}
-          options={["Male", "Female", "Other"]}
+          type="text"
           Icon={UserIcon}
-          placeholder="Gender"
-          field="gender"
+          placeholder="First name"
+          field="firstName"
+        />
+        <TextInput
+          currState={payload}
+          setState={setPayload}
+          context={OnboaringContext}
+          type="text"
+          Icon={UserIcon}
+          placeholder="Last name"
+          field="lastName"
         />
         <TextInput
           currState={payload}
@@ -51,6 +60,15 @@ const Onboarding = () => {
           Icon={UserIcon}
           placeholder="Age"
           field="age"
+        />
+        <DropInput
+          setState={setPayload}
+          currState={payload}
+          context={OnboaringContext}
+          options={["Male", "Female", "Other"]}
+          Icon={UserIcon}
+          placeholder="Gender"
+          field="gender"
         />
         <TextInput
           currState={payload}
@@ -70,15 +88,7 @@ const Onboarding = () => {
           placeholder="Weight (lbs)"
           field="weight"
         />
-        <DropInput
-          setState={setPayload}
-          currState={payload}
-          context={OnboaringContext}
-          options={["Beginner", "Intermediate", "Advanced"]}
-          Icon={UserIcon}
-          placeholder="Experience"
-          field="experience"
-        />
+
         <div className={style.buffer}></div>
       </div>
     );
@@ -88,15 +98,16 @@ const Onboarding = () => {
     return (
       <div className={style.container}>
         <ProgressHeader heading={heading2} subHeading={subheading2} />
-        <TextInput
-          currState={payload}
+        <DropInput
           setState={setPayload}
+          currState={payload}
           context={OnboaringContext}
-          type="number"
+          options={["Beginner", "Intermediate", "Advanced"]}
           Icon={UserIcon}
-          placeholder="Target Weight"
-          field="weightGoal"
+          placeholder="Experience"
+          field="experience"
         />
+
         <DropInput
           setState={setPayload}
           currState={payload}
@@ -115,7 +126,15 @@ const Onboarding = () => {
           placeholder="Nutrition Goal"
           field="nutritionGoal"
         />
-
+        <TextInput
+          currState={payload}
+          setState={setPayload}
+          context={OnboaringContext}
+          type="number"
+          Icon={UserIcon}
+          placeholder="Target Weight (lbs)"
+          field="weightGoal"
+        />
         <div className={style.buffer}></div>
       </div>
     );

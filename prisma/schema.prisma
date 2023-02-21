@@ -53,13 +53,30 @@ enum Nutrition_Goals {
     MAINTAIN
 }
 
+enum Experience {
+    BEGINNER
+    INTERMEDIATE
+    ADVANCED
+}
+
+enum Gender {
+    MALE
+    FEMALE
+    OTHER
+}
+
 model User {
     id             String           @id @default(cuid())
     name           String?
     email          String?          @unique
     emailVerified  DateTime?
     image          String?
-    weight         String?
+    weight         Int?
+    height         Int?
+    weightGoal     Int?
+    age            Int?
+    gender         Gender?
+    experience     Experience?
     lifing_goal    Lifting_Goals?
     nutrition_goal Nutrition_Goals?
     accounts       Account[]

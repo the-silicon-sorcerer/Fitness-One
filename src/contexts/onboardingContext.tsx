@@ -3,13 +3,16 @@
 import { createContext, useReducer } from "react";
 import type { Dispatch } from "react";
 import type { SetPage, ProgressType } from "../types/progressContext";
+import z from "zod";
 
 export type Gender = "MALE" | "FEMALE" | "OTHER";
 export type Experience = "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
 export type FitnessGoal = "SIZE" | "STRENGTH";
-export type NutritionGoal = "BULKING" | "CUTTING";
+export type NutritionGoal = "BULKING" | "CUTTING" | "MAINTAIN";
 
-interface OnboardingState {
+export interface OnboardingState {
+  firstName?: string;
+  lastName?: string;
   gender?: Gender;
   age?: number;
   weight?: number;
@@ -20,6 +23,28 @@ interface OnboardingState {
   weightGoal?: number;
   currentPage: number;
 }
+
+export const OnboardingSchema = z.object({
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
+  gender: z.union([z.literal("MALE"), z.literal("FEMALE"), z.literal("OTHER")]),
+  age: z.number().min(1),
+  weight: z.number().min(1),
+  height: z.number().min(1),
+  experience: z.union([
+    z.literal("BEGINNER"),
+    z.literal("INTERMEDIATE"),
+    z.literal("ADVANCED"),
+  ]),
+  fitnessGoal: z.union([z.literal("SIZE"), z.literal("STRENGTH")]),
+  nutritionGoal: z.union([
+    z.literal("BULKING"),
+    z.literal("CUTTING"),
+    z.literal("MAINTAIN"),
+  ]),
+  weightGoal: z.number().min(1),
+  currentPage: z.number().min(1),
+});
 
 interface OnboardingAction {
   type: ProgressType;
@@ -44,6 +69,8 @@ const onboardingReducer = (
       if (typeof payload !== "number") {
         return {
           ...state,
+          firstName: payload.firstName,
+          lastName: payload.lastName,
           gender: payload.gender,
           age: payload.age,
           weight: payload.weight,
@@ -65,6 +92,8 @@ const onboardingReducer = (
 };
 
 const initalState: OnboardingState = {
+  firstName: undefined,
+  lastName: undefined,
   gender: undefined,
   age: undefined,
   weight: undefined,

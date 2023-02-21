@@ -103,6 +103,10 @@ input {
   font-weight: 400;
 }
 
+.link {
+  width: 100%;
+}
+
 /* HEADING STYLES */
 
 h1 {

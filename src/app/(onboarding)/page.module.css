@@ -26,3 +26,7 @@
 .subContainer > p {
   margin-top: 20px;
 }
+
+.link {
+  width: 100%;
+}

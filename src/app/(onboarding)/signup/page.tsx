@@ -45,12 +45,6 @@ const SignUp = () => {
       <div className={style.options}>
         <RefTextInput
           type="text"
-          Icon={UserIcon}
-          ref={nameRef}
-          placeholder="Full name"
-        />
-        <RefTextInput
-          type="text"
           Icon={MainIcon}
           ref={emailRef}
           placeholder="Email"

@@ -5,6 +5,11 @@ import { Context, useContext } from "react";
 import { ProgressContextValue } from "../../../types/progressContext";
 import { BackIconSmall } from "../../(svg)";
 import { NextIconSmall } from "../../(svg)";
+import {
+  OnboardingSchema,
+  OnboardingState,
+} from "../../../contexts/onboardingContext";
+import { trpc } from "../../../utils/trpcProvider";
 
 import style from "./progressFooter.module.css";
 
@@ -15,6 +20,7 @@ interface ProgressFooterProps {
 
 const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
   const { progressData, progressDispatch } = useContext(context);
+  const mutation = trpc.setup.insert.useMutation();
 
   const onPrevious = () => {
     if (progressData.currentPage > 1) {
@@ -36,6 +42,13 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
     }
   };
 
+  const onFinish = () => {
+    if (OnboardingSchema.safeParse(progressData).success) {
+      // @ts-expect-error ts can eat a cock
+      mutation.mutate(progressData);
+    }
+  };
+
   return (
     <div className={style.footer}>
       {progressData.currentPage > 1 ? (
@@ -46,7 +59,14 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
       ) : (
         <div className={style.previous}></div>
       )}
-      <div className={style.next} onClick={() => onContinue()}>
+      <div
+        className={style.next}
+        onClick={
+          progressData.currentPage === events
+            ? () => onFinish()
+            : () => onContinue()
+        }
+      >
         <p className="body-B-Medium">
           {progressData.currentPage === events ? "Finish" : "Continue"}
         </p>
