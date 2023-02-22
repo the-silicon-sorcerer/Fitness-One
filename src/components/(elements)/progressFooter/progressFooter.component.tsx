@@ -1,15 +1,13 @@
 "use client";
 
 import { Context, useContext } from "react";
+import { useRouter } from "next/navigation";
+import { trpc } from "../../../utils/trpcProvider";
 
 import { ProgressContextValue } from "../../../types/progressContext";
 import { BackIconSmall } from "../../(svg)";
 import { NextIconSmall } from "../../(svg)";
-import {
-  OnboardingSchema,
-  OnboardingState,
-} from "../../../contexts/onboardingContext";
-import { trpc } from "../../../utils/trpcProvider";
+import { OnboardingSchema } from "../../../contexts/onboardingContext";
 
 import style from "./progressFooter.module.css";
 
@@ -21,6 +19,7 @@ interface ProgressFooterProps {
 const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
   const { progressData, progressDispatch } = useContext(context);
   const mutation = trpc.setup.insert.useMutation();
+  const router = useRouter();
 
   const onPrevious = () => {
     if (progressData.currentPage > 1) {
@@ -44,9 +43,12 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
 
   const onFinish = () => {
     if (OnboardingSchema.safeParse(progressData).success) {
+      console.log("sucess");
       // @ts-expect-error ts can eat a cock
       mutation.mutate(progressData);
+      router.push("/dashboard");
     }
+    console.log("failed");
   };
 
   return (

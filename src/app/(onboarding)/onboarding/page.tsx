@@ -1,150 +1,173 @@
 "use client";
 
-import { useContext, useRef, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { UserIcon } from "../../../components/(svg)";
 import { OnboaringContext } from "../../../contexts/onboardingContext";
-import DropInput from "../../../components/(forms)/dropInput/dropInput.component";
-import TextInput from "../../../components/(forms)/textInput/textInput.component";
-import ProgressHeader from "../../../components/(elements)/progressHeader/progressHeader.component";
-
-import style from "./page.module.css";
+import ProgressInfo from "../../../components/(pages)/progressPage/progressInfo/progressInfo.component";
+import FinalMessage from "../../../components/(pages)/progressPage/finalMessage/finalMessage.component";
 
 const Onboarding = () => {
   const { progressData, progressDispatch } = useContext(OnboaringContext);
   const [payload, setPayload] = useState(progressData);
 
-  console.log(progressData);
-
   useEffect(() => {
     progressDispatch({ type: "SET_DATA", payload: payload });
   }, [payload]);
 
-  const heading = "Basic Information";
-  const subheading =
-    "This data is used to better generate workouts and track progress.";
-
-  const heading2 = "Set Fitness Goals";
-  const subheading2 = "You can change your goals at any time";
-
-  const heading3 = "Account Setup Complete!";
-  const subheading3 = "Click finish to enter your dashboard.";
-
   if (progressData.currentPage === 1) {
     return (
-      <div className={style.container}>
-        <ProgressHeader heading={heading} subHeading={subheading} />
-        <TextInput
-          currState={payload}
-          setState={setPayload}
-          context={OnboaringContext}
-          type="text"
-          Icon={UserIcon}
-          placeholder="First name"
-          field="firstName"
-        />
-        <TextInput
-          currState={payload}
-          setState={setPayload}
-          context={OnboaringContext}
-          type="text"
-          Icon={UserIcon}
-          placeholder="Last name"
-          field="lastName"
-        />
-        <TextInput
-          currState={payload}
-          setState={setPayload}
-          context={OnboaringContext}
-          type="number"
-          Icon={UserIcon}
-          placeholder="Age"
-          field="age"
-        />
-        <DropInput
-          setState={setPayload}
-          currState={payload}
-          context={OnboaringContext}
-          options={["Male", "Female", "Other"]}
-          Icon={UserIcon}
-          placeholder="Gender"
-          field="gender"
-        />
-        <TextInput
-          currState={payload}
-          setState={setPayload}
-          context={OnboaringContext}
-          type="number"
-          Icon={UserIcon}
-          placeholder="Height (in)"
-          field="height"
-        />
-        <TextInput
-          currState={payload}
-          setState={setPayload}
-          context={OnboaringContext}
-          type="number"
-          Icon={UserIcon}
-          placeholder="Weight (lbs)"
-          field="weight"
-        />
-
-        <div className={style.buffer}></div>
-      </div>
+      <ProgressInfo
+        data={[
+          {
+            method: "input",
+            inputs: {
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              type: "text",
+              Icon: UserIcon,
+              placeholder: "First name",
+              field: "firstName",
+            },
+          },
+          {
+            method: "input",
+            inputs: {
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              type: "text",
+              Icon: UserIcon,
+              placeholder: "Last name",
+              field: "lastName",
+            },
+          },
+          {
+            method: "input",
+            inputs: {
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              type: "number",
+              Icon: UserIcon,
+              placeholder: "Age",
+              field: "age",
+            },
+          },
+          {
+            method: "drop",
+            inputs: {
+              options: ["Male", "Female", "Other"],
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              Icon: UserIcon,
+              placeholder: "Gender",
+              field: "gender",
+            },
+          },
+          {
+            method: "input",
+            inputs: {
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              type: "number",
+              Icon: UserIcon,
+              placeholder: "Height (in)",
+              field: "height",
+            },
+          },
+          {
+            method: "input",
+            inputs: {
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              type: "number",
+              Icon: UserIcon,
+              placeholder: "Weight (lbs)",
+              field: "weight",
+            },
+          },
+        ]}
+        heading={{
+          header: "Basic Information",
+          subHeader:
+            "This data is used to better generate workouts and track progress.",
+        }}
+      />
     );
   }
 
   if (progressData.currentPage === 2) {
     return (
-      <div className={style.container}>
-        <ProgressHeader heading={heading2} subHeading={subheading2} />
-        <DropInput
-          setState={setPayload}
-          currState={payload}
-          context={OnboaringContext}
-          options={["Beginner", "Intermediate", "Advanced"]}
-          Icon={UserIcon}
-          placeholder="Experience"
-          field="experience"
-        />
-
-        <DropInput
-          setState={setPayload}
-          currState={payload}
-          context={OnboaringContext}
-          options={["Strength", "Size"]}
-          Icon={UserIcon}
-          placeholder="Fitness Goal"
-          field="fitnessGoal"
-        />
-        <DropInput
-          setState={setPayload}
-          currState={payload}
-          context={OnboaringContext}
-          options={["Cutting", "Bulking", "Maintain"]}
-          Icon={UserIcon}
-          placeholder="Nutrition Goal"
-          field="nutritionGoal"
-        />
-        <TextInput
-          currState={payload}
-          setState={setPayload}
-          context={OnboaringContext}
-          type="number"
-          Icon={UserIcon}
-          placeholder="Target Weight (lbs)"
-          field="weightGoal"
-        />
-        <div className={style.buffer}></div>
-      </div>
+      <ProgressInfo
+        data={[
+          {
+            method: "drop",
+            inputs: {
+              options: ["Beginner", "Intermediate", "Advanced"],
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              Icon: UserIcon,
+              placeholder: "Experience",
+              field: "experience",
+            },
+          },
+          {
+            method: "drop",
+            inputs: {
+              options: ["Strength", "Size"],
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              Icon: UserIcon,
+              placeholder: "Fitness goal",
+              field: "fitnessGoal",
+            },
+          },
+          {
+            method: "drop",
+            inputs: {
+              options: ["Cutting", "Bulking", "Maintain"],
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              Icon: UserIcon,
+              placeholder: "Nutrition goal",
+              field: "nutritionGoal",
+            },
+          },
+          {
+            method: "input",
+            inputs: {
+              currState: payload,
+              setState: setPayload,
+              context: OnboaringContext,
+              type: "number",
+              Icon: UserIcon,
+              placeholder: "Target weight (lbs)",
+              field: "weightGoal",
+            },
+          },
+        ]}
+        heading={{
+          header: "Set Fitness Goals",
+          subHeader: "You can change your goals at any time",
+        }}
+      />
     );
   }
 
   if (progressData.currentPage === 3) {
     return (
-      <div className={style.finalContainer}>
-        <ProgressHeader heading={heading3} subHeading={subheading3} />
-      </div>
+      <FinalMessage
+        heading="Account Setup Complete!"
+        subheading="Click finish to enter your dashboard."
+      />
     );
   }
 };

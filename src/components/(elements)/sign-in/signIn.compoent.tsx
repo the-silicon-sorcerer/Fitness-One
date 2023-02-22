@@ -18,7 +18,7 @@ const SignIn = ({ provider, Icon, callback }: SignInProps) => {
 
   const logIn = () => {
     if (status === "authenticated") {
-      void router.push("/");
+      void router.push("/dashboard");
     } else {
       void signIn(provider, { callbackUrl: callback });
     }
@@ -29,7 +29,6 @@ const SignIn = ({ provider, Icon, callback }: SignInProps) => {
       <div className={style.lable}>
         <Icon />
         <p className="body-B-Medium">
-          {" "}
           {provider.charAt(0).toLocaleUpperCase().concat(provider.slice(1))}
         </p>
       </div>

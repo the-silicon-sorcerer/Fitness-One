@@ -12,7 +12,6 @@ import SignIn from "../../../components/(elements)/sign-in/signIn.compoent";
 import TermsText from "../../../components/(elements)/termsText/termsText.component";
 import HaveAccount from "../../../components/(elements)/haveAccount/haveAccount.component";
 
-import { UserIcon } from "../../../components/(svg)";
 import { MainIcon } from "../../../components/(svg)";
 import { GoogleIcon } from "../../../components/(svg)";
 import { FacebookIcon } from "../../../components/(svg)";
@@ -22,15 +21,15 @@ import style from "./page.module.css";
 const SignUp = () => {
   const { status } = useSession();
   const router = useRouter();
-  const nameRef = useRef({} as HTMLInputElement);
   const emailRef = useRef({} as HTMLInputElement);
+
   const emailSchema = z.string().email();
 
   const callback = "/onboarding";
 
   const submitEmail = () => {
     if (status === "authenticated") {
-      return void router.push("/");
+      return void router.push("/dashboard");
     }
     if (emailSchema.safeParse(emailRef.current.value).success) {
       void signIn("email", {

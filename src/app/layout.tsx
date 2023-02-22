@@ -1,8 +1,6 @@
 import { TrpcProvider } from "../utils/trpcProvider";
 import { Inter } from "@next/font/google";
 import AuthProvider from "../utils/authProvider";
-import getServerSession from "../utils/getServerSession";
-import { redirect } from "next/navigation";
 
 import "../styles/globals.css";
 

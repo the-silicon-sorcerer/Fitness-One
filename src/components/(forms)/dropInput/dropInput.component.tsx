@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useContext, useEffect } from "react";
 import type { Dispatch, SetStateAction, Context } from "react";
+import { useState, useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { DropIcon } from "../../(svg)";
 
 import style from "./dropInput.module.css";
 
-interface DropInputProps {
+export interface DropInputProps {
   Icon: any;
   placeholder: string;
   options: string[];

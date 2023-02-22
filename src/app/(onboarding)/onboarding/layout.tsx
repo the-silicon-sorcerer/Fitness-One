@@ -1,8 +1,10 @@
+import { redirect } from "next/navigation";
+import { prisma } from "../../../server/db";
+
 import { OnboardingProvider } from "../../../contexts/onboardingContext";
 import { OnboaringContext } from "../../../contexts/onboardingContext";
 import ProgressLayout from "../../../components/(layouts)/progressLayout/progressLayout.component";
 import getServerSession from "../../../utils/getServerSession";
-import { redirect } from "next/navigation";
 
 const onboardingLayout = async ({
   children,
@@ -11,7 +13,15 @@ const onboardingLayout = async ({
 }) => {
   const session = await getServerSession();
   if (!session) {
-    redirect("/");
+    redirect("/dashboard");
+  }
+  const user = await prisma.user.findUnique({
+    where: { id: session.user!.id },
+  });
+
+  // Assumes setup done if gender is defined
+  if (user?.gender !== null) {
+    redirect("/dashboard");
   }
 
   return (

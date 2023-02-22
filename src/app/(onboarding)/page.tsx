@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import ButtonLarge from "../../components/(buttons)/buttonLarge/buttonLarge.component";
 import Logo from "../../components/(elements)/logo/logo.component";
 import HaveAccount from "../../components/(elements)/haveAccount/haveAccount.component";
+import Link from "next/link";
 
 import style from "./page.module.css";
-import Link from "next/link";
 
 const SplashScreen = () => {
   const router = useRouter();

@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import { useRef, useEffect, useContext, useState } from "react";
+import React, { useContext } from "react";
 import type { Dispatch, SetStateAction, Context } from "react";
 
 import style from "./textInput.module.css";
 
-interface TextInputProps {
+export interface TextInputProps {
   placeholder: string;
   Icon: any;
   type: "text" | "number";
@@ -39,8 +38,8 @@ const TextInput = ({
   return (
     <div className={style.container}>
       <Icon />
-
       <input
+        inputMode={type === "number" ? "decimal" : "text"}
         onChange={onChangeHandle}
         type={type}
         placeholder={currVal ? currVal : placeholder}

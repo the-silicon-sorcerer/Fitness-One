@@ -1,6 +1,7 @@
 import { protectedProcedure, createTRPCRouter } from "../trpc";
-import { OnboardingSchema } from "../../../contexts/onboardingContext";
 import { prisma } from "../../db";
+
+import { OnboardingSchema } from "../../../contexts/onboardingContext";
 
 export const setupRouter = createTRPCRouter({
   insert: protectedProcedure
