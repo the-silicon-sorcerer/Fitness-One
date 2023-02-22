@@ -13,7 +13,7 @@ const onboardingLayout = async ({
 }) => {
   const session = await getServerSession();
   if (!session) {
-    redirect("/dashboard");
+    redirect("/");
   }
   const user =
     session.user &&
@@ -23,7 +23,7 @@ const onboardingLayout = async ({
 
   // Assumes setup done if gender is defined
   if (user?.gender !== null) {
-    redirect("/dashboard");
+    redirect("/");
   }
 
   return (

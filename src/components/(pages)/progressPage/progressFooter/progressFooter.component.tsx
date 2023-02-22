@@ -47,7 +47,7 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
       console.log("sucess");
       // @ts-expect-error ts can eat a cock
       mutation.mutate(progressData);
-      router.push("/dashboard");
+      router.push("/");
     }
   };
 

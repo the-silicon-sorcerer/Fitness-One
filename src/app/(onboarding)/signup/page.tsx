@@ -29,7 +29,7 @@ const SignUp = () => {
 
   const submitEmail = () => {
     if (status === "authenticated") {
-      return void router.push("/dashboard");
+      return void router.push("/");
     }
     if (emailSchema.safeParse(emailRef.current.value).success) {
       void signIn("email", {

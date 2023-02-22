@@ -18,7 +18,7 @@ const SignIn = ({ provider, Icon, callback }: SignInProps) => {
 
   const logIn = () => {
     if (status === "authenticated") {
-      void router.push("/dashboard");
+      void router.push("/");
     } else {
       void signIn(provider, { callbackUrl: callback });
     }
