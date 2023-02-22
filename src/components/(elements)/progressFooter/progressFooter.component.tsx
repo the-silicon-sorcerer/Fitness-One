@@ -1,8 +1,9 @@
 "use client";
 
-import { Context, useContext } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { trpc } from "../../../utils/trpcProvider";
+import type { Context } from "react";
 
 import { ProgressContextValue } from "../../../types/progressContext";
 import { BackIconSmall } from "../../(svg)";

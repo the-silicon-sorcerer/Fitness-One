@@ -1,6 +1,7 @@
 "use client";
 
-import { Context, useContext } from "react";
+import { useContext } from "react";
+import type { Context } from "react";
 import { ProgressContextValue } from "../../../types/progressContext";
 
 import style from "./progressBar.module.css";

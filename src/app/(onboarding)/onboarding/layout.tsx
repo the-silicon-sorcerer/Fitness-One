@@ -15,9 +15,11 @@ const onboardingLayout = async ({
   if (!session) {
     redirect("/dashboard");
   }
-  const user = await prisma.user.findUnique({
-    where: { id: session.user!.id },
-  });
+  const user =
+    session.user &&
+    (await prisma.user.findUnique({
+      where: { id: session.user.id },
+    }));
 
   // Assumes setup done if gender is defined
   if (user?.gender !== null) {
