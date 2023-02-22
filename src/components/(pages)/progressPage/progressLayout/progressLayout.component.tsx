@@ -2,8 +2,8 @@
 
 import type { Context } from "react";
 
-import ProgressBar from "../../(elements)/progressBar/progressBar.component";
-import ProgressFooter from "../../(elements)/progressFooter/progressFooter.component";
+import ProgressBar from "../progressBar/progressBar.component";
+import ProgressFooter from "../progressFooter/progressFooter.component";
 
 interface ProgressLayoutProps {
   events: number;

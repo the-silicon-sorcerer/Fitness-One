@@ -7,10 +7,10 @@ import z from "zod";
 
 import ButtonLarge from "../../../components/(buttons)/buttonLarge/buttonLarge.component";
 import RefTextInput from "../../../components/(forms)/refTextInput/refTextInput.component";
-import ContinueWith from "../../../components/(elements)/continueWith/continue.component";
+import ContinueWith from "../../../components/(pages)/login-signin/continueWith/continue.component";
 import SignIn from "../../../components/(elements)/sign-in/signIn.compoent";
-import TermsText from "../../../components/(elements)/termsText/termsText.component";
-import HaveAccount from "../../../components/(elements)/haveAccount/haveAccount.component";
+import TermsText from "../../../components/(pages)/login-signin/termsText/termsText.component";
+import HaveAccount from "../../../components/(pages)/login-signin/haveAccount/haveAccount.component";
 
 import { MainIcon } from "../../../components/(svg)";
 import { GoogleIcon } from "../../../components/(svg)";

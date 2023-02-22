@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import ButtonLarge from "../../components/(buttons)/buttonLarge/buttonLarge.component";
 import Logo from "../../components/(elements)/logo/logo.component";
-import HaveAccount from "../../components/(elements)/haveAccount/haveAccount.component";
+import HaveAccount from "../../components/(pages)/login-signin/haveAccount/haveAccount.component";
 import Link from "next/link";
 
 import style from "./page.module.css";

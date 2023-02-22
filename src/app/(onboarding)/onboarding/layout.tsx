@@ -3,7 +3,7 @@ import { prisma } from "../../../server/db";
 
 import { OnboardingProvider } from "../../../contexts/onboardingContext";
 import { OnboaringContext } from "../../../contexts/onboardingContext";
-import ProgressLayout from "../../../components/(layouts)/progressLayout/progressLayout.component";
+import ProgressLayout from "../../../components/(pages)/progressPage/progressLayout/progressLayout.component";
 import getServerSession from "../../../utils/getServerSession";
 
 const onboardingLayout = async ({

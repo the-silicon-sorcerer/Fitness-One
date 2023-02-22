@@ -2,13 +2,13 @@
 
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
-import { trpc } from "../../../utils/trpcProvider";
+import { trpc } from "../../../../utils/trpcProvider";
 import type { Context } from "react";
 
-import { ProgressContextValue } from "../../../types/progressContext";
-import { BackIconSmall } from "../../(svg)";
-import { NextIconSmall } from "../../(svg)";
-import { OnboardingSchema } from "../../../contexts/onboardingContext";
+import { ProgressContextValue } from "../../../../types/progressContext";
+import { BackIconSmall } from "../../../(svg)";
+import { NextIconSmall } from "../../../(svg)";
+import { OnboardingSchema } from "../../../../contexts/onboardingContext";
 
 import style from "./progressFooter.module.css";
 
@@ -49,7 +49,6 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
       mutation.mutate(progressData);
       router.push("/dashboard");
     }
-    console.log("failed");
   };
 
   return (

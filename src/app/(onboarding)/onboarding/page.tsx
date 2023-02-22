@@ -156,7 +156,7 @@ const Onboarding = () => {
         ]}
         heading={{
           header: "Set Fitness Goals",
-          subHeader: "You can change your goals at any time",
+          subHeader: "You can change your goals at any time.",
         }}
       />
     );

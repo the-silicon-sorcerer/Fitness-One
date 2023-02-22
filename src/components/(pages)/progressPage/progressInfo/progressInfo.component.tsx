@@ -1,6 +1,6 @@
 "use client";
 
-import ProgressHeader from "../../../(elements)/progressHeader/progressHeader.component";
+import ProgressHeader from "../progressHeader/progressHeader.component";
 import TextInput from "../../../(forms)/textInput/textInput.component";
 import type { TextInputProps } from "../../../(forms)/textInput/textInput.component";
 import DropInput from "../../../(forms)/dropInput/dropInput.component";

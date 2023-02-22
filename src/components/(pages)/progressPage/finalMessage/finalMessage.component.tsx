@@ -1,4 +1,4 @@
-import ProgressHeader from "../../../(elements)/progressHeader/progressHeader.component";
+import ProgressHeader from "../progressHeader/progressHeader.component";
 
 import style from "./finalMessage.module.css";
 
