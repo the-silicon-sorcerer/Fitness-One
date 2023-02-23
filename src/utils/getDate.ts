@@ -2,7 +2,7 @@ import { retryDelay } from "@trpc/client/dist/internals/retryDelay";
 
 export default function getDate() {
   const dateObj = new Date();
-  let date = dateObj.getDate();
+  const date = dateObj.getDate();
   let day: string | number = dateObj.getDay();
   let month: string | number = dateObj.getMonth();
 
