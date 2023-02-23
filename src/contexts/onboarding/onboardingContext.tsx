@@ -4,7 +4,7 @@ import { createContext, useReducer } from "react";
 import type { Dispatch } from "react";
 import z from "zod";
 
-import type { SetPage, ProgressType } from "../types/progressContext";
+import type { SetPage, ProgressType } from "../../types/progressContext";
 
 export type Gender = "MALE" | "FEMALE" | "OTHER";
 export type Experience = "BEGINNER" | "INTERMEDIATE" | "ADVANCED";

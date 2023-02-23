@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { prisma } from "../../../server/db";
 
-import { OnboardingProvider } from "../../../contexts/onboardingContext";
-import { OnboaringContext } from "../../../contexts/onboardingContext";
+import { OnboardingProvider } from "../../../contexts/onboarding/onboardingContext";
+import { OnboaringContext } from "../../../contexts/onboarding/onboardingContext";
 import ProgressLayout from "../../../components/(pages)/progressPage/progressLayout/progressLayout.component";
 import getServerSession from "../../../utils/getServerSession";
 

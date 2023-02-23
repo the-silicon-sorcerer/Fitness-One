@@ -2,10 +2,18 @@
 
 import { useContext, useEffect, useState } from "react";
 
-import { UserIcon } from "../../../components/(svg)";
-import { OnboaringContext } from "../../../contexts/onboardingContext";
+import { OnboaringContext } from "../../../contexts/onboarding/onboardingContext";
 import ProgressInfo from "../../../components/(pages)/progressPage/progressInfo/progressInfo.component";
 import FinalMessage from "../../../components/(pages)/progressPage/finalMessage/finalMessage.component";
+
+import { UserIcon } from "../../../components/(svg)";
+import { DateIcon } from "../../../components/(svg)";
+import { HeightIcon } from "../../../components/(svg)";
+import { GenderIcon } from "../../../components/(svg)";
+import { WeightIcon } from "../../../components/(svg)";
+import { StarIcon } from "../../../components/(svg)";
+import { DumbellIcon } from "../../../components/(svg)";
+import { NutritionIcon } from "../../../components/(svg)";
 
 const Onboarding = () => {
   const { progressData, progressDispatch } = useContext(OnboaringContext);
@@ -50,7 +58,7 @@ const Onboarding = () => {
               setState: setPayload,
               context: OnboaringContext,
               type: "number",
-              Icon: UserIcon,
+              Icon: DateIcon,
               placeholder: "Age",
               field: "age",
             },
@@ -62,7 +70,7 @@ const Onboarding = () => {
               currState: payload,
               setState: setPayload,
               context: OnboaringContext,
-              Icon: UserIcon,
+              Icon: GenderIcon,
               placeholder: "Gender",
               field: "gender",
             },
@@ -74,7 +82,7 @@ const Onboarding = () => {
               setState: setPayload,
               context: OnboaringContext,
               type: "number",
-              Icon: UserIcon,
+              Icon: HeightIcon,
               placeholder: "Height (in)",
               field: "height",
             },
@@ -86,7 +94,7 @@ const Onboarding = () => {
               setState: setPayload,
               context: OnboaringContext,
               type: "number",
-              Icon: UserIcon,
+              Icon: WeightIcon,
               placeholder: "Weight (lbs)",
               field: "weight",
             },
@@ -112,7 +120,7 @@ const Onboarding = () => {
               currState: payload,
               setState: setPayload,
               context: OnboaringContext,
-              Icon: UserIcon,
+              Icon: StarIcon,
               placeholder: "Experience",
               field: "experience",
             },
@@ -124,7 +132,7 @@ const Onboarding = () => {
               currState: payload,
               setState: setPayload,
               context: OnboaringContext,
-              Icon: UserIcon,
+              Icon: DumbellIcon,
               placeholder: "Fitness goal",
               field: "fitnessGoal",
             },
@@ -136,7 +144,7 @@ const Onboarding = () => {
               currState: payload,
               setState: setPayload,
               context: OnboaringContext,
-              Icon: UserIcon,
+              Icon: NutritionIcon,
               placeholder: "Nutrition goal",
               field: "nutritionGoal",
             },
@@ -148,7 +156,7 @@ const Onboarding = () => {
               setState: setPayload,
               context: OnboaringContext,
               type: "number",
-              Icon: UserIcon,
+              Icon: WeightIcon,
               placeholder: "Target weight (lbs)",
               field: "weightGoal",
             },

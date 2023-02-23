@@ -40,12 +40,21 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+a:hover,
+a:focus,
+a:active {
+  background-color: transparent !important;
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+}
+
 /* FONTS */
 
 /* GLOBAL STYLES  */
 
 html {
   color-scheme: dark light;
+  background-color: var(--bg-900);
 }
 
 html,

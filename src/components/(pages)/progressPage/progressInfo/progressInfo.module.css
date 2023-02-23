@@ -7,9 +7,3 @@
 .container > * {
   margin-bottom: 20px;
 }
-
-.buffer {
-  min-height: 100px;
-  flex: 1;
-  margin-bottom: 0px;
-}

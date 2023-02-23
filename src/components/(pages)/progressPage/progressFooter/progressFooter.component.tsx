@@ -8,7 +8,7 @@ import type { Context } from "react";
 import { ProgressContextValue } from "../../../../types/progressContext";
 import { BackIconSmall } from "../../../(svg)";
 import { NextIconSmall } from "../../../(svg)";
-import { OnboardingSchema } from "../../../../contexts/onboardingContext";
+import { OnboardingSchema } from "../../../../contexts/onboarding/onboardingContext";
 
 import style from "./progressFooter.module.css";
 

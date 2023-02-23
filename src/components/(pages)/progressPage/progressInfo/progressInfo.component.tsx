@@ -2,6 +2,7 @@
 
 import ProgressHeader from "../progressHeader/progressHeader.component";
 import TextInput from "../../../(forms)/textInput/textInput.component";
+import Buffer from "../../../(elements)/buffer/buffer.component";
 import type { TextInputProps } from "../../../(forms)/textInput/textInput.component";
 import DropInput from "../../../(forms)/dropInput/dropInput.component";
 import type { DropInputProps } from "../../../(forms)/dropInput/dropInput.component";
@@ -58,7 +59,7 @@ const ProgressInfo = ({ data, heading }: ProgressInfoProps) => {
     <div className={style.container}>
       <ProgressHeader heading={heading.header} subHeading={heading.subHeader} />
       {constructedInputs}
-      <div className={style.buffer}></div>
+      <Buffer height="100px" />
     </div>
   );
 };

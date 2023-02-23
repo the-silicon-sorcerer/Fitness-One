@@ -1,0 +1,14 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 24px;
+  border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
+  background-color: var(--bg-800);
+  border-top: 1px solid var(--bg-600);
+}
