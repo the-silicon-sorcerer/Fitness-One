@@ -1,19 +1,18 @@
+"use client";
+
 import Image from "next/image";
 
-import getServerSession from "../../../../utils/getServerSession";
-
-import style from "./userInfo.module.css";
 import getDate from "../../../../utils/getDate";
 import BoxIcon from "../../../(elements)/boxIcon/boxIcon.component";
 import { BellIconsmall } from "../../../(svg)";
+import { useSession } from "next-auth/react";
 
-interface UserInfoProps {
-  skeleton?: boolean;
-}
+import style from "./userInfo.module.css";
 
-const UserInfo = async ({ skeleton }: UserInfoProps) => {
-  if (!skeleton) {
-    const session = await getServerSession();
+const UserInfo = () => {
+  const { data: session, status } = useSession();
+
+  if (status === "authenticated") {
     const image = session?.user?.image;
     const name = session?.user?.name;
     const date = getDate();
@@ -34,7 +33,8 @@ const UserInfo = async ({ skeleton }: UserInfoProps) => {
       </div>
     );
   }
-  return <div className={style.skeleton}></div>;
+
+  return <div className={style.skeleton}>Loading...</div>;
 };
 
 export default UserInfo;

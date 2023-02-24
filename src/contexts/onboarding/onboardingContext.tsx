@@ -88,7 +88,7 @@ const onboardingReducer = (
         return { ...state, currentPage: payload };
       }
     default:
-      return { ...state };
+      return state;
   }
 };
 

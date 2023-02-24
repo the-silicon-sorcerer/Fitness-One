@@ -140,9 +140,9 @@ model Fintess_Plan {
     tuesday   String
     wednesday String
     thursday  String
-    Friday    String
-    Saturday  String
-    Sunday    String
+    friday    String
+    saturday  String
+    sunday    String
     date      DateTime        @default(now())
     user      User            @relation(fields: [userId], references: [id])
     userId    String

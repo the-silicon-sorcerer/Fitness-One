@@ -52,6 +52,14 @@ a:active {
 
 /* GLOBAL STYLES  */
 
+* { 
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none; 
+          user-select: none; 
+}
+
 html {
   color-scheme: dark light;
   background-color: var(--bg-900);
