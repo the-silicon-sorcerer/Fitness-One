@@ -3,7 +3,7 @@
 import { useContext, useEffect } from "react";
 
 import { MainContext } from "../../contexts/main/mainContext";
-import Header from "../../components/(pages)/dashboard/header/header.component";
+import Header from "../../components/(pages)/main/dashboard/header/header.component";
 import Buffer from "../../components/(elements)/buffer/buffer.component";
 import UserInfo from "../../components/(pages)/main/dashboard/userInfo/userInfo.component";
 

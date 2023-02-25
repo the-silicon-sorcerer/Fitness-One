@@ -1,4 +1,5 @@
 import type { Dispatch } from "react";
+import type { UseTRPCMutationResult } from "@trpc/react-query/shared";
 
 export type SetPage = number;
 
@@ -9,10 +10,19 @@ interface ProgressAction {
   payload: SetPage;
 }
 
+// used to extand any contextStateType
+
+export interface ProgressStateValue {
+  currentPage: number;
+  mutation?: UseTRPCMutationResult<any, any, any, any>;
+}
+
+// for components utalizing progressConext
+
 export interface ProgressContextValue {
   progressData: {
     currentPage: number;
-    [key: string]: string | number;
+    mutation: UseTRPCMutationResult<any, any, any, any>;
   };
   progressDispatch: Dispatch<ProgressAction>;
 }

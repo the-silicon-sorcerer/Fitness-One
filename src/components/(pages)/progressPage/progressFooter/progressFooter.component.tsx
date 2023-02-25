@@ -45,8 +45,7 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
   const onFinish = () => {
     if (OnboardingSchema.safeParse(progressData).success) {
       console.log("sucess");
-      // @ts-expect-error ts can eat a cock
-      mutation.mutate(progressData);
+      progressData.mutation.mutate(progressData);
       router.push("/");
     }
   };
