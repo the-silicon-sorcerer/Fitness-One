@@ -54,7 +54,7 @@
 .skeletonText {
   height: 20px;
   width: 125px;
-  border: var(--skeletonOutline);
+  border: 3px solid var(--bg-700);
   border-radius: var(--borderRadius);
 }
 
