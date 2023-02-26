@@ -8,7 +8,6 @@ import type { Context } from "react";
 import { ProgressContextValue } from "../../../../types/progressContext";
 import { BackIconSmall } from "../../../(svg)";
 import { NextIconSmall } from "../../../(svg)";
-import { OnboardingSchema } from "../../../../contexts/onboarding/onboardingContext";
 
 import style from "./progressFooter.module.css";
 
@@ -19,7 +18,6 @@ interface ProgressFooterProps {
 
 const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
   const { progressData, progressDispatch } = useContext(context);
-  const mutation = trpc.setup.insert.useMutation();
   const router = useRouter();
 
   const onPrevious = () => {
@@ -43,8 +41,7 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
   };
 
   const onFinish = () => {
-    if (OnboardingSchema.safeParse(progressData).success) {
-      console.log("sucess");
+    if (progressData.stateSchema.safeParse(progressData).success) {
       progressData.mutation.mutate(progressData);
       router.push("/");
     }

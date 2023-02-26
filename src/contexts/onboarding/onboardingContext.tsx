@@ -1,17 +1,15 @@
 "use client";
 
 import { createContext, useReducer, useEffect } from "react";
-import type { Dispatch } from "react";
-import z, { TypeOf, set } from "zod";
-
-import type {
-  SetPage,
-  ProgressType,
-  ProgressContextValue,
-  ProgressStateValue,
-} from "../../types/progressContext";
 import { trpc } from "../../utils/trpcProvider";
-import { UseTRPCMutationResult } from "@trpc/react-query/dist/shared";
+import z from "zod";
+
+import isMutation from "../../utils/isMutation";
+import type {
+  ProgressStateValue,
+  ProgressAction,
+  ProgressValue,
+} from "../../types/progressContext";
 
 export type Gender = "MALE" | "FEMALE" | "OTHER";
 export type Experience = "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
@@ -53,30 +51,13 @@ export const OnboardingSchema = z.object({
   currentPage: z.number().min(1),
 });
 
-interface OnboardingAction {
-  type: ProgressType | "SET_MUTATION";
-  payload:
-    | OnboardingState
-    | SetPage
-    | UseTRPCMutationResult<any, any, any, any>;
-}
-
-interface onboardingValue {
-  progressData: OnboardingState;
-  progressDispatch: Dispatch<OnboardingAction>;
-}
-
-const isMutation = (
-  p: OnboardingState | UseTRPCMutationResult<any, any, any, any>
-): p is UseTRPCMutationResult<any, any, any, any> => {
-  return (p as UseTRPCMutationResult<any, any, any, any>).mutate !== undefined;
-};
-
-export const OnboaringContext = createContext({} as onboardingValue);
+export const OnboaringContext = createContext(
+  {} as ProgressValue<OnboardingState>
+);
 
 const onboardingReducer = (
   state: OnboardingState,
-  action: OnboardingAction
+  action: ProgressAction<OnboardingState>
 ) => {
   const { type, payload } = action;
 
@@ -97,14 +78,17 @@ const onboardingReducer = (
           weightGoal: payload.weightGoal,
         };
       }
+      return { ...state };
     case "SET_MUTATION":
       if (typeof payload !== "number" && isMutation(payload)) {
         return { ...state, mutation: payload };
       }
+      return { ...state };
     case "PAGE_CHANGE":
       if (typeof payload === "number") {
         return { ...state, currentPage: payload };
       }
+      return { ...state };
     default:
       return state;
   }
@@ -123,6 +107,7 @@ const initalState: OnboardingState = {
   weightGoal: undefined,
   currentPage: 1,
   mutation: undefined,
+  stateSchema: OnboardingSchema,
 };
 
 export const OnboardingProvider = ({
@@ -134,7 +119,7 @@ export const OnboardingProvider = ({
     onboardingReducer,
     initalState
   );
-  const mutation = trpc.setup.insert.useMutation();
+  const mutation = trpc.setup.onboarding.useMutation();
 
   useEffect(() => {
     progressDispatch({ type: "SET_MUTATION", payload: mutation });

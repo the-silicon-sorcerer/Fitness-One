@@ -8,6 +8,14 @@ const MainLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession();
   if (!session) redirect("/welcome");
 
+  const user = await prisma?.user.findUnique({
+    where: { id: session.user?.id },
+  });
+
+  // assumes not proporly onboarded
+
+  if (user?.gender === null) redirect("/onboarding");
+
   return (
     <MainContextProvider>
       {children}
