@@ -5,7 +5,9 @@ import {
 } from "../../types/progressContext";
 import isMutation from "../../utils/isMutation";
 
-interface SetupContextState extends ProgressStateValue {}
+interface SetupContextState extends ProgressStateValue {
+  val: string;
+}
 
 const SetupContext = createContext({});
 
