@@ -135,7 +135,6 @@ enum Avalible_Splits {
 model Fintess_Plan {
     id        String          @id @default(cuid())
     split     Avalible_Splits
-    DPW       Int
     monday    String
     tuesday   String
     wednesday String
@@ -145,7 +144,7 @@ model Fintess_Plan {
     sunday    String
     date      DateTime        @default(now())
     user      User            @relation(fields: [userId], references: [id])
-    userId    String
+    userId    String          @unique
 }
 
 model Nutrition_Plan {
@@ -157,7 +156,7 @@ model Nutrition_Plan {
     water    Int
     date     DateTime @default(now())
     user     User     @relation(fields: [userId], references: [id])
-    userId   String
+    userId   String   @unique
 }
 
 model Meal {

@@ -42,15 +42,16 @@ const DropInput = ({
     });
   }, []);
 
-  const onSelect = (text: string) => {
+  const onSelect = (text: string | undefined) => {
     if (value) {
-      for (let obj of value) {
+      for (const obj of value) {
         if (text === obj.text) {
           return setState({ ...currState, [field]: obj.value });
         }
       }
     }
-    setState({ ...currState, [field]: text.toUpperCase() });
+    if (text) setState({ ...currState, [field]: text.toUpperCase() });
+    else setState({ ...currState, [field]: undefined });
   };
 
   const generateOptions = options.map((text) => {
@@ -62,8 +63,13 @@ const DropInput = ({
         }}
         className={style.option}
         onClick={() => {
-          setSelected(text);
-          onSelect(text);
+          if (selected !== text) {
+            setSelected(text);
+            onSelect(text);
+          } else {
+            setSelected(undefined);
+            onSelect(undefined);
+          }
         }}
       >
         <p className="body-B-Medium">{text}</p>

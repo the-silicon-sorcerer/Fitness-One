@@ -7,7 +7,7 @@ import {
 const FitnessLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <FitnessSetupContextProvider>
-      <ProgressLayout events={3} context={FitnessSetupContext}>
+      <ProgressLayout events={2} context={FitnessSetupContext}>
         {children}
       </ProgressLayout>
     </FitnessSetupContextProvider>

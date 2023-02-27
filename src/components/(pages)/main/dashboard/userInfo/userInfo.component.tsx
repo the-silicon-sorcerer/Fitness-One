@@ -20,7 +20,7 @@ const UserInfo = () => {
     return (
       <div className={style.container}>
         <div className={style.imageContainer}>
-          <Image fill src={image ? image : ""} alt="" />
+          <Image fill sizes="30px" src={image ? image : ""} alt="" />
         </div>
 
         <div className={style.text}>

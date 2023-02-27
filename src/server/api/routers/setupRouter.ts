@@ -4,6 +4,7 @@ import { prisma } from "../../db";
 import { OnboardingSchema } from "../../../contexts/onboarding/onboardingContext";
 import { FitnessSchema } from "../../../contexts/fitnessSetupContext/fitnessContext";
 import { TRPCError } from "@trpc/server";
+import { NutritionSchema } from "../../../contexts/nutritionSetupContext/nutritionSetupContext";
 
 export const setupRouter = createTRPCRouter({
   onboarding: protectedProcedure
@@ -41,7 +42,6 @@ export const setupRouter = createTRPCRouter({
       const mutation = await ctx.prisma.fintess_Plan.create({
         data: {
           split: input.split,
-          DPW: input.DPW,
           monday: input.monday,
           tuesday: input.tuesday,
           wednesday: input.wednesday,
@@ -49,6 +49,23 @@ export const setupRouter = createTRPCRouter({
           friday: input.friday,
           saturday: input.saturday,
           sunday: input.sunday,
+          userId: ctx.session.user.id,
+        },
+      });
+      if (!mutation) throw new TRPCError({ code: "BAD_REQUEST" });
+
+      return mutation;
+    }),
+  nutritionPlan: protectedProcedure
+    .input(NutritionSchema)
+    .mutation(async ({ ctx, input }) => {
+      const mutation = await ctx.prisma.nutrition_Plan.create({
+        data: {
+          calories: input.calories,
+          protein: input.protein,
+          carbs: input.carbs,
+          fat: input.fat,
+          water: input.water,
           userId: ctx.session.user.id,
         },
       });

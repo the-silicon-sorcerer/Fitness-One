@@ -2,7 +2,6 @@
 
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
-import { trpc } from "../../../../utils/trpcProvider";
 import type { Context } from "react";
 
 import { ProgressContextValue } from "../../../../types/progressContext";

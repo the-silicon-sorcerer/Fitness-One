@@ -13,9 +13,8 @@ import { trpc } from "../../utils/trpcProvider";
 
 type Avalible_Splits = "PPL" | "ARNOLD" | "BRO_SPLIT" | "CUSTOM";
 
-interface FitnessSertupContextState extends ProgressStateValue {
+interface FitnessSetupContextState extends ProgressStateValue {
   split?: Avalible_Splits;
-  DPW?: number;
   monday?: string;
   tuesday?: string;
   wednesday?: string;
@@ -32,7 +31,6 @@ export const FitnessSchema = z.object({
     z.literal("BRO_SPLIT"),
     z.literal("CUSTOM"),
   ]),
-  DPW: z.number().min(1),
   monday: z.string().min(1),
   tuesday: z.string().min(1),
   wednesday: z.string().min(1),
@@ -43,12 +41,12 @@ export const FitnessSchema = z.object({
 });
 
 export const FitnessSetupContext = createContext(
-  {} as ProgressValue<FitnessSertupContextState>
+  {} as ProgressValue<FitnessSetupContextState>
 );
 
 const fitnessSetupReducer = (
-  state: FitnessSertupContextState,
-  action: ProgressAction<FitnessSertupContextState>
+  state: FitnessSetupContextState,
+  action: ProgressAction<FitnessSetupContextState>
 ) => {
   const { type, payload } = action;
   switch (type) {
@@ -57,7 +55,6 @@ const fitnessSetupReducer = (
         return {
           ...state,
           split: payload.split,
-          DPW: payload.DPW,
           monday: payload.monday,
           tuesday: payload.tuesday,
           wednesday: payload.wednesday,
@@ -87,9 +84,8 @@ const fitnessSetupReducer = (
   }
 };
 
-const initalState: FitnessSertupContextState = {
+const initalState: FitnessSetupContextState = {
   split: undefined,
-  DPW: undefined,
   monday: undefined,
   tuesday: undefined,
   wednesday: undefined,

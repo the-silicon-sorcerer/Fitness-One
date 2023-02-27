@@ -20,3 +20,5 @@ export { default as DumbellIconLarge } from "./dumbellIconLarge.svg";
 export { default as NutritionIconLarge } from "./nutritionIconLarge.svg";
 export { default as UserIconLarge } from "./userIconLarge.svg";
 export { default as BellIconsmall } from "./bellIconSmall.svg";
+export { default as FoodIcon } from "./foodIcon.svg";
+export { default as WaterIcon } from "./waterIcon.svg";
