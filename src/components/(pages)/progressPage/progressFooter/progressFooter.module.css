@@ -34,4 +34,5 @@
 
 .next {
   background-color: var(--bg-600);
+  box-shadow: var(--iconShadow);
 }

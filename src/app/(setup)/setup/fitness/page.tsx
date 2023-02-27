@@ -25,34 +25,10 @@ const FitnessPage = () => {
               currState: payload,
               setState: setPayload,
               context: FitnessSetupContext,
-              type: "text",
-              Icon: UserIcon,
-              placeholder: "First name",
-              field: "firstName",
-            },
-          },
-          {
-            method: "input",
-            inputs: {
-              currState: payload,
-              setState: setPayload,
-              context: FitnessSetupContext,
-              type: "text",
-              Icon: UserIcon,
-              placeholder: "Last name",
-              field: "lastName",
-            },
-          },
-          {
-            method: "input",
-            inputs: {
-              currState: payload,
-              setState: setPayload,
-              context: FitnessSetupContext,
               type: "number",
               Icon: UserIcon,
-              placeholder: "Age",
-              field: "age",
+              placeholder: "Days per week",
+              field: "DPW",
             },
           },
           {
@@ -63,37 +39,14 @@ const FitnessPage = () => {
               setState: setPayload,
               context: FitnessSetupContext,
               Icon: UserIcon,
-              placeholder: "Split",
+              placeholder: "Workout split",
               field: "split",
-            },
-          },
-          {
-            method: "input",
-            inputs: {
-              currState: payload,
-              setState: setPayload,
-              context: FitnessSetupContext,
-              type: "number",
-              Icon: UserIcon,
-              placeholder: "Height (in)",
-              field: "height",
-            },
-          },
-          {
-            method: "input",
-            inputs: {
-              currState: payload,
-              setState: setPayload,
-              context: FitnessSetupContext,
-              type: "number",
-              Icon: UserIcon,
-              placeholder: "Weight (lbs)",
-              field: "weight",
+              value: [{ text: '" Bro split "', value: "BRO_SPLIT" }],
             },
           },
         ]}
         heading={{
-          header: "Basic Information",
+          header: "Split Information",
           subHeader:
             "This data is used to better generate workouts and track progress.",
         }}

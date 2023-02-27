@@ -37,6 +37,7 @@ const ProgressInfo = ({ data, heading }: ProgressInfoProps) => {
           Icon={e.inputs.Icon}
           placeholder={e.inputs.placeholder}
           field={e.inputs.field}
+          value={e.inputs.value ? e.inputs.value : undefined}
         />
       );
     } else {

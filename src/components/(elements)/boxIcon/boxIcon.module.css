@@ -4,4 +4,5 @@
   display: grid;
   place-items: center;
   border-radius: var(--borderRadius);
+  box-shadow: var(--iconShadow);
 }

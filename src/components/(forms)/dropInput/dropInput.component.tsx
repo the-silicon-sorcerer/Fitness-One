@@ -16,6 +16,7 @@ export interface DropInputProps {
   currState: object | { [key: string]: string };
   setState: Dispatch<SetStateAction<any>>;
   context: Context<any>;
+  value?: { text: string; value: string }[];
 }
 
 const DropInput = ({
@@ -26,6 +27,7 @@ const DropInput = ({
   currState,
   setState,
   context,
+  value,
 }: DropInputProps) => {
   const [menuOpen, setMenu] = useState(false);
   const [selected, setSelected] = useState<undefined | string>(undefined);
@@ -41,6 +43,13 @@ const DropInput = ({
   }, []);
 
   const onSelect = (text: string) => {
+    if (value) {
+      for (let obj of value) {
+        if (text === obj.text) {
+          return setState({ ...currState, [field]: obj.value });
+        }
+      }
+    }
     setState({ ...currState, [field]: text.toUpperCase() });
   };
 
