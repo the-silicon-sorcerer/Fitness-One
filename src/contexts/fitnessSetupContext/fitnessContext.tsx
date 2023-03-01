@@ -13,7 +13,7 @@ import { trpc } from "../../utils/trpcProvider";
 
 type Avalible_Splits = "PPL" | "ARNOLD" | "BRO_SPLIT" | "CUSTOM";
 
-interface FitnessSetupContextState extends ProgressStateValue {
+export interface FitnessPlanValues {
   split?: Avalible_Splits;
   monday?: string;
   tuesday?: string;
@@ -23,6 +23,10 @@ interface FitnessSetupContextState extends ProgressStateValue {
   saturday?: string;
   sunday?: string;
 }
+
+interface FitnessSetupContextState
+  extends ProgressStateValue,
+    FitnessPlanValues {}
 
 export const FitnessSchema = z.object({
   split: z.union([

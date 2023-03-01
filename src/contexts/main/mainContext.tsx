@@ -1,12 +1,17 @@
 "use client";
 
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
+import { FitnessPlanValues } from "../fitnessSetupContext/fitnessContext";
+import { NutritionPlanValues } from "../nutritionSetupContext/nutritionSetupContext";
+import { trpc } from "../../utils/trpcProvider";
 
 type Pages = "DASHBOARD" | "FITNESS" | "NUTRITION" | "PROFILE";
 
 interface MainState {
   currentPage?: Pages;
-  userSetup: boolean;
+  fitnessPLan?: FitnessPlanValues;
+  nutritionPlan?: NutritionPlanValues;
+  isLoading: boolean;
 }
 
 interface MainContextValue {
@@ -16,30 +21,66 @@ interface MainContextValue {
 
 export const MainContext = createContext({} as MainContextValue);
 
-type MainTypes = "SET_PAGE";
-type MainPayload = { page: Pages };
+interface PageObject {
+  page: Pages;
+}
+interface DataOject {
+  fitnessPlan?: FitnessPlanValues;
+  nutritionPlan?: NutritionPlanValues;
+}
+
+type MainTypes = "SET_PAGE" | "LOAD_DATA" | "SET_LOADING";
+type MainPayload = PageObject | boolean | DataOject;
 
 interface MainAction {
   type: MainTypes;
   payload: MainPayload;
 }
 
+const isDataObject = (obj: PageObject | DataOject): obj is DataOject => {
+  return (obj as DataOject).fitnessPlan !== null;
+};
+
+const isPageObject = (obj: PageObject | DataOject): obj is PageObject => {
+  return (obj as PageObject).page !== undefined;
+};
+
 const MainReducer = (state: MainState, action: MainAction) => {
   const { type, payload } = action;
   switch (type) {
+    case "LOAD_DATA":
+      if (typeof payload !== "boolean" && isDataObject(payload)) {
+        return {
+          ...state,
+          fitnessPLan: payload.fitnessPlan,
+          nutritionPlan: payload.nutritionPlan,
+        };
+      }
     case "SET_PAGE":
-      return {
-        ...state,
-        currentPage: payload.page,
-      };
+      if (typeof payload !== "boolean" && isPageObject(payload)) {
+        return {
+          ...state,
+          currentPage: payload.page,
+        };
+      }
+      return { ...state };
+    case "SET_LOADING":
+      if (typeof payload === "boolean") {
+        return {
+          ...state,
+          isLoading: payload,
+        };
+      }
     default:
       return state;
   }
 };
 
-const initalState = {
+const initalState: MainState = {
   currentPage: undefined,
-  userSetup: false,
+  fitnessPLan: undefined,
+  nutritionPlan: undefined,
+  isLoading: true,
 };
 
 export const MainContextProvider = ({
@@ -48,6 +89,21 @@ export const MainContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [mainState, mainDispatch] = useReducer(MainReducer, initalState);
+  const userData = trpc.userRouter.getUserData.useQuery();
+
+  useEffect(() => {
+    mainDispatch({ type: "SET_LOADING", payload: true });
+    if (userData.isSuccess) {
+      mainDispatch({
+        type: "LOAD_DATA",
+        payload: {
+          fitnessPlan: userData.data?.Fintess_Plan[0],
+          nutritionPlan: userData.data?.Nutrition_Plan[0],
+        },
+      });
+      mainDispatch({ type: "SET_LOADING", payload: false });
+    }
+  }, [userData.data]);
 
   return (
     <MainContext.Provider value={{ mainState, mainDispatch }}>

@@ -16,39 +16,76 @@ import {
   NutritionIconSmall,
   dumbBellIconSmall,
 } from "../../components/(svg)";
+import LoadingSpinner from "../../components/(elements)/loadingSpinner/loadingSpinner.component";
 
 const Dashboard = () => {
-  const { mainDispatch } = useContext(MainContext);
+  const { mainDispatch, mainState } = useContext(MainContext);
 
   useEffect(() => {
     mainDispatch({ type: "SET_PAGE", payload: { page: "DASHBOARD" } });
   }, []);
+
+  const setupSteps = 3;
+
+  const calcPrecentage = () => {
+    if (!mainState.isLoading) {
+      let tot = 1;
+      if (mainState.fitnessPLan) tot++;
+      if (mainState.nutritionPlan) tot++;
+      return tot;
+    }
+    return 1;
+  };
+
+  if (mainState.isLoading) {
+    return (
+      <div className={style.container}>
+        <Header />
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (calcPrecentage() < setupSteps) {
+    return (
+      <div className={style.container}>
+        <Header />
+        <Buffer height="55px" />
+        <UserInfo />
+
+        <ContainingBlock>
+          <PrecentComplete
+            input={calcPrecentage()}
+            total={3}
+            bg="var(--bg-700)"
+            title="Account Setup"
+          />
+          {!mainState.fitnessPLan && (
+            <IconBox
+              text="Setup workout split"
+              Icon={dumbBellIconSmall}
+              End={NextIconSmall}
+              link="/setup/fitness"
+            />
+          )}
+          {!mainState.nutritionPlan && (
+            <IconBox
+              text="Setup nutrition plan"
+              Icon={NutritionIconSmall}
+              End={NextIconSmall}
+              link="/setup/nutrition"
+            />
+          )}
+        </ContainingBlock>
+      </div>
+    );
+  }
 
   return (
     <div className={style.container}>
       <Header />
       <Buffer height="55px" />
       <UserInfo />
-      <ContainingBlock>
-        <PrecentComplete
-          input={1}
-          total={3}
-          bg="var(--bg-700)"
-          title="Account Setup"
-        />
-        <IconBox
-          text="Setup workout split"
-          Icon={dumbBellIconSmall}
-          End={NextIconSmall}
-          link="/setup/fitness"
-        />
-        <IconBox
-          text="Setup nutrition plan"
-          Icon={NutritionIconSmall}
-          End={NextIconSmall}
-          link="/setup/nutrition"
-        />
-      </ContainingBlock>
     </div>
   );
 };

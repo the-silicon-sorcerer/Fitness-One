@@ -10,13 +10,17 @@ import isMutation from "../../utils/isMutation";
 import z from "zod";
 import { trpc } from "../../utils/trpcProvider";
 
-interface NutritionContextState extends ProgressStateValue {
+export interface NutritionPlanValues {
   calories?: number;
   protein?: number;
   fat?: number;
   carbs?: number;
   water?: number;
 }
+
+interface NutritionContextState
+  extends ProgressStateValue,
+    NutritionPlanValues {}
 
 export const NutritionSchema = z.object({
   calories: z.number(),

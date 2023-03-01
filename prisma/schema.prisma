@@ -82,7 +82,7 @@ model User {
     accounts       Account[]
     sessions       Session[]
     Workouts       Workout[]
-    Fintess_Plan   Fintess_Plan[]
+    Fitness_Plan   Fitness_Plan[]
     Nutrition_Plan Nutrition_Plan[]
 }
 
@@ -132,7 +132,7 @@ enum Avalible_Splits {
     CUSTOM
 }
 
-model Fintess_Plan {
+model Fitness_Plan {
     id        String          @id @default(cuid())
     split     Avalible_Splits
     monday    String
