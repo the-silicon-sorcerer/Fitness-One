@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  padding: 20px;
+  border-radius: var(--borderRadius);
+}
+
+.text {
+  margin-bottom: 12px;
+}
+
+.text > p {
+  margin-bottom: 3px;
+}
+
+.bar {
+  height: 10px;
+  background-color: var(--bg-800);
+  border-radius: var(--borderRadius);
+  display: flex;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: var(--bg-600);
+}
+
+.icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.skelContainer {
+  height: 110.5px;
+  border-radius: var(--borderRadius);
+}

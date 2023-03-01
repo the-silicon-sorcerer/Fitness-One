@@ -1,0 +1,27 @@
+.container {
+  background-color: var(--bg-700);
+  border-radius: var(--borderRadius);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.end {
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+
+  /* to cure odc lol */
+  transform: translateX(2px);
+}
+
+.skelContainer {
+  height: 50px;
+  border-radius: var(--borderRadius);
+}

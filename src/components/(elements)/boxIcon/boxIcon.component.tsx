@@ -4,18 +4,24 @@ interface BoxIconProps {
   Icon: any;
   size: string;
   bg?: boolean;
+  backgroundColor?: string;
+  fill?: string;
 }
 
-const BoxIcon = ({ Icon, bg, size }: BoxIconProps) => {
+const BoxIcon = ({ fill, Icon, bg, size, backgroundColor }: BoxIconProps) => {
   return (
     <div
       style={{
-        backgroundColor: bg ? "var(--bg-700)" : "transparent",
+        backgroundColor: bg
+          ? backgroundColor
+            ? backgroundColor
+            : "var(--bg-700)"
+          : "transparent",
         height: size,
       }}
       className={style.box}
     >
-      <Icon />
+      <Icon style={{ fill: fill ? fill : undefined }} />
     </div>
   );
 };

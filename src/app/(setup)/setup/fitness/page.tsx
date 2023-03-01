@@ -11,8 +11,6 @@ const FitnessPage = () => {
   const { progressData, progressDispatch } = useContext(FitnessSetupContext);
   const [payload, setPayload] = useState(progressData);
 
-  console.log(progressData);
-
   useEffect(() => {
     progressDispatch({ type: "SET_DATA", payload: payload });
   }, [payload]);

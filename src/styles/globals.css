@@ -41,6 +41,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+a:link {
+  text-decoration: none;
+}
+
 a:hover,
 a:focus,
 a:active {

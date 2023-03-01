@@ -60,6 +60,7 @@ const DropInput = ({
         key={uuidv4()}
         style={{
           border: text === selected ? "2px solid var(--bg-600)" : undefined,
+          boxShadow: text === selected ? undefined : "var(--iconShadow)",
         }}
         className={style.option}
         onClick={() => {

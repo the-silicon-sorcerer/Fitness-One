@@ -22,3 +22,6 @@ export { default as UserIconLarge } from "./userIconLarge.svg";
 export { default as BellIconsmall } from "./bellIconSmall.svg";
 export { default as FoodIcon } from "./foodIcon.svg";
 export { default as WaterIcon } from "./waterIcon.svg";
+export { default as DotsIcon } from "./dotsIcon.svg";
+export { default as dumbBellIconSmall } from "./dumbBellIconSmall.svg";
+export { default as NutritionIconSmall } from "./nutritionIconSmall.svg";
