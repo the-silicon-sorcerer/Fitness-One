@@ -84,6 +84,7 @@ model User {
     Workouts       Workout[]
     Fitness_Plan   Fitness_Plan[]
     Nutrition_Plan Nutrition_Plan[]
+    Meal           Meal[]
 }
 
 enum Status {
@@ -165,10 +166,16 @@ model Meal {
     date     DateTime @default(now())
     food     Food     @relation(fields: [foodId], references: [id])
     foodId   String
+    user     User     @relation(fields: [userId], references: [id])
+    userId   String
 }
 
 model Food {
-    id   String @id @default(cuid())
-    name String
-    Meal Meal[]
+    id       String @id @default(cuid())
+    name     String
+    calories Int
+    protein  Int
+    carbs    Int
+    fat      Int
+    Meal     Meal[]
 }

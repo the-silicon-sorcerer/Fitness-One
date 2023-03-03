@@ -97,7 +97,7 @@ export const MainContextProvider = ({
       mainDispatch({
         type: "LOAD_DATA",
         payload: {
-          fitnessPlan: userData.data?.Fintess_Plan[0],
+          fitnessPlan: userData.data?.Fitness_Plan[0],
           nutritionPlan: userData.data?.Nutrition_Plan[0],
         },
       });

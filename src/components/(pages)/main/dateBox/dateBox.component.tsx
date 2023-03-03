@@ -3,14 +3,16 @@ import style from "./dateBox.module.css";
 interface DateBoxProps {
   day: string;
   date: string;
+  onClick: () => void;
   fill?: string;
 }
 
-const DateBox = ({ day, date, fill }: DateBoxProps) => {
+const DateBox = ({ day, date, fill, onClick }: DateBoxProps) => {
   return (
     <div
       className={style.dateBox}
       style={{ backgroundColor: fill ? fill : undefined }}
+      onClick={() => onClick()}
     >
       <p
         className="body-B-Small"

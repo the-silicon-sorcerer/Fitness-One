@@ -17,7 +17,7 @@ export const userRouter = createTRPCRouter({
         id: ctx.session.user.id,
       },
       include: {
-        Fintess_Plan: true,
+        Fitness_Plan: true,
         Nutrition_Plan: true,
       },
     });

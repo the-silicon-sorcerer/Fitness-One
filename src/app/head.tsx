@@ -2,7 +2,7 @@ export default function Head() {
   return (
     <>
       <title>Fitness One</title>
-      <meta name="description" content="All-in-One Fintess Solution" />
+      <meta name="description" content="All-in-One Fitness Solution" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
       <meta
         name="viewport"

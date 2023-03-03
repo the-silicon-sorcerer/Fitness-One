@@ -1,12 +1,18 @@
+"use client";
+
 import moment from "moment";
+import type { Dispatch } from "react";
+
+import DateBox from "../dateBox/dateBox.component";
 
 import style from "./calendarHeader.module.css";
-import DateBox from "../dateBox/dateBox.component";
-import { date } from "zod";
 
-// {moment().endOf("weeks").format("DD/MM/YYYY")}
+interface CalendarHeaderProps {
+  date: moment.Moment;
+  setDate: Dispatch<moment.Moment>;
+}
 
-const CalendarHeader = () => {
+const CalendarHeader = ({ date, setDate }: CalendarHeaderProps) => {
   const generateDates = () => {
     const arr = [];
     for (
@@ -15,16 +21,18 @@ const CalendarHeader = () => {
       moment().endOf("week").add(1, "day").format("DD/MM/YYYY");
       i++
     ) {
+      const currDate = moment().startOf("week").day(i);
       arr.push(
         <DateBox
+          key={currDate.format("DD/MM/YYYY")}
           fill={
-            moment().startOf("weeks").day(i).format("DD/MM/YYYY") ===
-            moment().format("DD/MM/YYYY")
+            currDate.format("DD/MM/YYYY") === date.format("DD/MM/YYYY")
               ? "var(--bg-600)"
               : undefined
           }
-          date={moment().startOf("weeks").day(i).format("DD")}
-          day={moment().startOf("weeks").day(i).format("ddd")}
+          date={currDate.format("DD")}
+          day={currDate.day(i).format("ddd")}
+          onClick={() => setDate(currDate)}
         />
       );
     }

@@ -39,7 +39,7 @@ export const setupRouter = createTRPCRouter({
   fitnessPlan: protectedProcedure
     .input(FitnessSchema)
     .mutation(async ({ ctx, input }) => {
-      const mutation = await ctx.prisma.fintess_Plan.create({
+      const mutation = await ctx.prisma.fitness_Plan.create({
         data: {
           split: input.split,
           monday: input.monday,

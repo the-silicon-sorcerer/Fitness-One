@@ -5,4 +5,5 @@
   padding: 20px;
   background-color: var(--bg-800);
   border-radius: var(--borderRadius);
+  box-shadow: var(--iconShadow);
 }
