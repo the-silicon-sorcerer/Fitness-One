@@ -6,6 +6,7 @@ import LoadingSpinner from "../../../components/(elements)/loadingSpinner/loadin
 import { useRouter } from "next/navigation";
 
 import style from "./page.module.css";
+import CalendarHeader from "../../../components/(pages)/main/calendarHeader/calendarHeader.component";
 
 const NutritionPage = () => {
   const { mainDispatch, mainState } = useContext(MainContext);
@@ -22,7 +23,11 @@ const NutritionPage = () => {
     return <LoadingSpinner />;
   }
 
-  return <div>Nutrition</div>;
+  return (
+    <div>
+      <CalendarHeader />
+    </div>
+  );
 };
 
 export default NutritionPage;

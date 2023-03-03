@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import style from "./page.module.css";
 import LoadingSpinner from "../../../components/(elements)/loadingSpinner/loadingSpinner.component";
+import CalendarHeader from "../../../components/(pages)/main/calendarHeader/calendarHeader.component";
 
 const FitnessPage = () => {
   const { mainDispatch, mainState } = useContext(MainContext);
@@ -22,7 +23,11 @@ const FitnessPage = () => {
     return <LoadingSpinner />;
   }
 
-  return <div>Fitness</div>;
+  return (
+    <div>
+      <CalendarHeader />
+    </div>
+  );
 };
 
 export default FitnessPage;

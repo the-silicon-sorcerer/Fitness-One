@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import getDate from "../../../../../utils/getDate";
+import moment from "moment";
 import BoxIcon from "../../../../(elements)/boxIcon/boxIcon.component";
 import { BellIconsmall } from "../../../../(svg)";
 import { useSession } from "next-auth/react";
@@ -15,7 +15,7 @@ const UserInfo = () => {
   if (status === "authenticated") {
     const image = session?.user?.image;
     const name = session?.user?.name;
-    const date = getDate();
+    const date = moment();
 
     return (
       <div className={style.container}>
@@ -25,7 +25,7 @@ const UserInfo = () => {
 
         <div className={style.text}>
           <p className="body-B-Small">{name ? name : ""}</p>
-          <p className="body-ExtraSmall">{`${date.day} ${date.month} ${date.date}th`}</p>
+          <p className="body-ExtraSmall">{date.format("dddd MMMM Do")}</p>
         </div>
         <div className={style.notifactions}>
           <BoxIcon size="30px" Icon={BellIconsmall} bg />

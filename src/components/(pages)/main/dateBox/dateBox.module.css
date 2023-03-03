@@ -1,0 +1,11 @@
+.dateBox {
+  background-color: var(--bg-700);
+  width: 40px;
+  padding: 9px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--borderRadius);
+  flex-grow: 1;
+}
