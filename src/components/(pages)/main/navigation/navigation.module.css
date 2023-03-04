@@ -11,4 +11,5 @@
   border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
   background-color: var(--bg-800);
   border-top: 1px solid var(--bg-600);
+  box-shadow: var(--navShadow);
 }

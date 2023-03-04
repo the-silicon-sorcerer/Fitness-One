@@ -11,6 +11,7 @@
 
   --btn-active: #818181;
   --iconShadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  --navShadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   --skeletonOutline: 3px solid var(--bg-700);
 
   /* STRUCTURE SETTINGS */
@@ -67,7 +68,6 @@ a:active {
 
 html {
   color-scheme: dark light;
-  background-color: var(--bg-900);
 }
 
 html,

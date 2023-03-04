@@ -3,19 +3,23 @@
 import { useContext, useEffect, useState } from "react";
 import { trpc } from "../../../utils/trpcProvider";
 import { useRouter } from "next/navigation";
+import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
-import { MainContext } from "../../../contexts/main/mainContext";
 import Buffer from "../../../components/(elements)/buffer/buffer.component";
 import LoadingSpinner from "../../../components/(elements)/loadingSpinner/loadingSpinner.component";
 import CalendarHeader from "../../../components/(pages)/main/calendarHeader/calendarHeader.component";
 import PrecentComplete from "../../../components/(pages)/main/precentComplete/precentComplete.component";
-
-import style from "./page.module.css";
 import MacroDisplay from "../../../components/(pages)/main/nutrition/macroDisplay/macroDisplay.component";
+import { MainContext } from "../../../contexts/main/mainContext";
 import { captializeFirst } from "../../../utils/capitalizeFirst";
 
+import style from "./page.module.css";
+import ButtonLarge from "../../../components/(buttons)/buttonLarge/buttonLarge.component";
+import Link from "next/link";
+
 const NutritionPage = () => {
+  if (typeof window !== "undefined") window.scrollTo(0, 0);
   const { mainDispatch, mainState } = useContext(MainContext);
   const [date, setDate] = useState(moment());
   const macros = trpc.nutritionRouter.getMeals.useQuery({
@@ -66,6 +70,7 @@ const NutritionPage = () => {
     for (const macro of args) {
       arr.push(
         <MacroDisplay
+          key={uuidv4()}
           title={captializeFirst(macro)}
           macro={getMacros()?.[macro]}
           goal={mainState.nutritionPlan?.[macro]}
@@ -104,6 +109,9 @@ const NutritionPage = () => {
             <div className={style.macroContainer}>
               {generateMacros("protein", "carbs", "fat", "protein")}
             </div>
+            <Link href="/meal/add">
+              <ButtonLarge text="+ Add Meals" />
+            </Link>
           </>
         )}
       </div>

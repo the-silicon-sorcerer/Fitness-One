@@ -52,7 +52,6 @@ const Dashboard = () => {
         <Header />
         <Buffer height="55px" />
         <UserInfo />
-
         <ContainingBlock>
           <PrecentComplete
             input={calcPrecentage()}

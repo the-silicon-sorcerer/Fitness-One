@@ -25,3 +25,4 @@ export { default as WaterIcon } from "./waterIcon.svg";
 export { default as DotsIcon } from "./dotsIcon.svg";
 export { default as dumbBellIconSmall } from "./dumbBellIconSmall.svg";
 export { default as NutritionIconSmall } from "./nutritionIconSmall.svg";
+export { default as BackArrowIcon } from "./backArrowIcon.svg";

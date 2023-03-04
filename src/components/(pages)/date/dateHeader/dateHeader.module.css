@@ -4,11 +4,16 @@
   top: 0;
   left: 0;
   width: 100vw;
-  background-color: var(--bg-800);
-  padding: 24px 20px;
-  border-bottom: 1px solid var(--bg-600);
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  padding: 20px 24px;
+  background-color: var(--bg-800);
+  border-bottom: 1px solid var(--bg-600);
   box-shadow: var(--navShadow);
+}
+
+.container > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
