@@ -1,0 +1,31 @@
+.container {
+  background-color: var(--bg-800);
+  padding: 20px;
+  border-radius: var(--borderRadius);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: var(--iconShadow);
+}
+
+.circle {
+  height: 60px;
+  aspect-ratio: 1/1;
+  border-radius: 50px;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--iconShadow);
+}
+
+.inner {
+  height: 80%;
+  aspect-ratio: 1/1;
+  background-color: var(--bg-800);
+  border-radius: 50px;
+  display: grid;
+  place-items: center;
+}
+
+.text p:nth-child(1) {
+  margin-bottom: 3px;
+}
