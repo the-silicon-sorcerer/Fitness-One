@@ -16,7 +16,7 @@ interface MealContextState {
   food?: string;
   servings?: number;
   meal?: Meal;
-  category: string;
+  category?: string;
 }
 
 type MealActionType = "SET_DATA" | "SET_CATEGORY";

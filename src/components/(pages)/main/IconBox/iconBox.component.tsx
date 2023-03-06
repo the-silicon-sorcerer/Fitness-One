@@ -8,9 +8,17 @@ interface IconBoxProps {
   End?: any;
   link?: string;
   skeleton?: boolean;
+  selected?: boolean;
 }
 
-const IconBox = ({ Icon, text, End, link, skeleton }: IconBoxProps) => {
+const IconBox = ({
+  Icon,
+  text,
+  End,
+  link,
+  skeleton,
+  selected,
+}: IconBoxProps) => {
   if (skeleton) {
     return <div className={`${style.skelContainer} skeleton`}></div>;
   }
@@ -19,7 +27,13 @@ const IconBox = ({ Icon, text, End, link, skeleton }: IconBoxProps) => {
     <>
       {link ? (
         <Link href={link}>
-          <div className={style.container}>
+          <div
+            className={style.container}
+            style={{
+              border: selected ? "2px solid var(--bg-600)" : undefined,
+              padding: selected ? "8px 18px" : undefined,
+            }}
+          >
             <div className={style.main}>
               <BoxIcon
                 Icon={Icon}
@@ -38,7 +52,13 @@ const IconBox = ({ Icon, text, End, link, skeleton }: IconBoxProps) => {
           </div>
         </Link>
       ) : (
-        <div className={style.container}>
+        <div
+          className={style.container}
+          style={{
+            border: selected ? "2px solid var(--bg-600)" : undefined,
+            padding: selected ? "8px 18px" : undefined,
+          }}
+        >
           <div className={style.main}>
             <BoxIcon
               Icon={Icon}

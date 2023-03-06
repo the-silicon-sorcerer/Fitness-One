@@ -20,20 +20,26 @@ import {
 const AddMeal = () => {
   const { mealState, mealDispatch } = useContext(MealContext);
   const limitedCat = trpc.nutritionRouter.getLimitedCategory.useQuery({
-    category: mealState.category,
+    category: mealState.category || "",
   });
 
   const generateOptions = () => {
     const arr = [];
     if (!limitedCat.isLoading && limitedCat.data) {
       for (const option of limitedCat.data) {
+        const onClick = () => {
+          mealDispatch({ type: "SET_DATA", payload: { food: option.name } });
+        };
+
         arr.push(
-          <IconBox
-            key={uuidv4()}
-            Icon={dumbBellIconSmall}
-            End={InfoIconSmall}
-            text={captializeFirst(option.name)}
-          />
+          <div key={option.name} onClick={() => onClick()}>
+            <IconBox
+              Icon={dumbBellIconSmall}
+              End={InfoIconSmall}
+              text={captializeFirst(option.name)}
+              selected={mealState.food === option.name}
+            />
+          </div>
         );
       }
     }
@@ -53,9 +59,11 @@ const AddMeal = () => {
       <DateHeader />
       <Buffer height="92.8px" />
       <CategorySlider />
-      <ViewAllBox title={captializeFirst(mealState.category)}>
-        {limitedCat.isLoading ? generateSkeletons() : generateOptions()}
-      </ViewAllBox>
+      {mealState.category && (
+        <ViewAllBox title={captializeFirst(mealState.category)}>
+          {limitedCat.isLoading ? generateSkeletons() : generateOptions()}
+        </ViewAllBox>
+      )}
     </div>
   );
 };
