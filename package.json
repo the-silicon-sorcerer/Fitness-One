@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "seed": "node ./src/utils/seedDb.ts"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.5",

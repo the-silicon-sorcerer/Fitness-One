@@ -1,0 +1,13 @@
+.container {
+  min-width: 100vw;
+  transform: translateX(-24px);
+  display: flex;
+  gap: 20px;
+  padding: 15px 24px;
+  background-color: var(--bg-800);
+  overflow-x: scroll;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}

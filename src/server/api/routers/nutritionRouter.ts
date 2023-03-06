@@ -10,7 +10,6 @@ export const NutrtionRouter = createTRPCRouter({
       const date = moment(input.date);
       const meals = await ctx.prisma.meal.findMany({
         where: {
-          //   userId: ctx.session.user.id,
           date: {
             gte: date.toDate(),
             lte: date.add(1, "day").toDate(),
@@ -36,5 +35,17 @@ export const NutrtionRouter = createTRPCRouter({
       });
       if (!newMeal) throw new TRPCError({ code: "NOT_FOUND" });
       return newMeal;
+    }),
+  getLimitedCategory: protectedProcedure
+    .input(z.object({ category: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const query = ctx.prisma.food.findMany({
+        where: {
+          category: input.category,
+        },
+        take: 3,
+      });
+      if (!query) throw new TRPCError({ code: "NOT_FOUND" });
+      return query;
     }),
 });

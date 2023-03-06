@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useReducer } from "react";
 import type { Dispatch } from "react";
 
@@ -14,9 +16,10 @@ interface MealContextState {
   food?: string;
   servings?: number;
   meal?: Meal;
+  category: string;
 }
 
-type MealActionType = "SET_DATA";
+type MealActionType = "SET_DATA" | "SET_CATEGORY";
 
 interface MealAction {
   type: MealActionType;
@@ -33,6 +36,12 @@ const MealReducer = (state: MealContextState, action: MealAction) => {
         servings: payload.servings,
         meal: payload.meal,
       };
+    case "SET_CATEGORY": {
+      return {
+        ...state,
+        category: payload.category,
+      };
+    }
     default:
       return { ...state };
   }
@@ -42,6 +51,7 @@ const initalState: MealContextState = {
   food: undefined,
   servings: undefined,
   meal: undefined,
+  category: "RECENT",
 };
 
 export const MealContextProvider = ({

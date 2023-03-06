@@ -171,11 +171,12 @@ model Meal {
 }
 
 model Food {
-    id       String @id @default(cuid())
+    id       String  @id @default(cuid())
     name     String
     calories Int
-    protein  Int
-    carbs    Int
-    fat      Int
+    protein  Float
+    carbs    Float
+    fat      Float
+    category String?
     Meal     Meal[]
 }

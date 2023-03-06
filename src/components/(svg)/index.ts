@@ -26,3 +26,5 @@ export { default as DotsIcon } from "./dotsIcon.svg";
 export { default as dumbBellIconSmall } from "./dumbBellIconSmall.svg";
 export { default as NutritionIconSmall } from "./nutritionIconSmall.svg";
 export { default as BackArrowIcon } from "./backArrowIcon.svg";
+export { default as InfoIcon } from "./infoIcon.svg";
+export { default as InfoIconSmall } from "./infoIconSmall.svg";

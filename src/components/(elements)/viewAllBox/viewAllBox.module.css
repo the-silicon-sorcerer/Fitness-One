@@ -1,0 +1,21 @@
+.container {
+  background-color: var(--bg-800);
+  padding: 20px;
+  border-radius: var(--borderRadius);
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.text p:nth-child(2) {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.children > * {
+  margin-top: 10px;
+}
