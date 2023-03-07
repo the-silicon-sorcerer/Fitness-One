@@ -7,10 +7,10 @@ import { useContext } from "react";
 import { MealContext } from "../../../../contexts/mealContext/mealContext";
 
 const CategorySlider = () => {
-  const { mealState, mealDispatch } = useContext(MealContext);
+  const { formState, formDispatch } = useContext(MealContext);
 
   const onClick = (category: string) => {
-    mealDispatch({
+    formDispatch({
       type: "SET_CATEGORY",
       payload: { category: category.toUpperCase() },
     });
@@ -24,11 +24,11 @@ const CategorySlider = () => {
           onClick={() => onClick(option)}
           style={{
             color:
-              mealState.category === option.toUpperCase()
+              formState.category === option.toUpperCase()
                 ? "var(--bg-600)"
                 : "var(--bg-700)",
             fontWeight:
-              mealState.category === option.toUpperCase() ? "600" : "none",
+              formState.category === option.toUpperCase() ? "600" : "none",
           }}
           className="body-Small"
           key={uuidv4()}

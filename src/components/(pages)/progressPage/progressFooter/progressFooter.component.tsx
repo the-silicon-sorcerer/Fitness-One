@@ -16,39 +16,39 @@ interface ProgressFooterProps {
 }
 
 const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
-  const { progressData, progressDispatch } = useContext(context);
+  const { formState, formDispatch } = useContext(context);
   const router = useRouter();
 
   const onPrevious = () => {
-    if (progressData.currentPage > 1) {
+    if (formState.currentPage > 1) {
       if (typeof window !== "undefined") window.scrollTo(0, 0);
-      progressDispatch({
-        payload: progressData.currentPage - 1,
+      formDispatch({
+        payload: formState.currentPage - 1,
         type: "PAGE_CHANGE",
       });
     }
   };
 
   const onContinue = () => {
-    if (progressData.currentPage < events) {
+    if (formState.currentPage < events) {
       if (typeof window !== "undefined") window.scrollTo(0, 0);
-      progressDispatch({
-        payload: progressData.currentPage + 1,
+      formDispatch({
+        payload: formState.currentPage + 1,
         type: "PAGE_CHANGE",
       });
     }
   };
 
   const onFinish = () => {
-    if (progressData.stateSchema.safeParse(progressData).success) {
-      progressData.mutation.mutate(progressData);
+    if (formState.stateSchema.safeParse(formState).success) {
+      formState.mutation.mutate(formState);
       router.push("/");
     }
   };
 
   return (
     <div className={style.footer}>
-      {progressData.currentPage > 1 ? (
+      {formState.currentPage > 1 ? (
         <div className={style.previous} onClick={() => onPrevious()}>
           <BackIconSmall style={{ fill: "var(--bg-600)" }} />
           <p className="body-B-Small">Previous</p>
@@ -59,13 +59,13 @@ const ProgressFooter = ({ context, events }: ProgressFooterProps) => {
       <div
         className={style.next}
         onClick={
-          progressData.currentPage === events
+          formState.currentPage === events
             ? () => onFinish()
             : () => onContinue()
         }
       >
         <p className="body-B-Medium">
-          {progressData.currentPage === events ? "Finish" : "Continue"}
+          {formState.currentPage === events ? "Finish" : "Continue"}
         </p>
         <NextIconSmall style={{ fill: "var(--bg-800)" }} />
       </div>

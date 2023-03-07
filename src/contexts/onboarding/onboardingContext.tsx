@@ -115,18 +115,15 @@ export const OnboardingProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [progressData, progressDispatch] = useReducer(
-    onboardingReducer,
-    initalState
-  );
+  const [formState, formDispatch] = useReducer(onboardingReducer, initalState);
   const mutation = trpc.setup.onboarding.useMutation();
 
   useEffect(() => {
-    progressDispatch({ type: "SET_MUTATION", payload: mutation });
+    formDispatch({ type: "SET_MUTATION", payload: mutation });
   }, []);
 
   return (
-    <OnboaringContext.Provider value={{ progressData, progressDispatch }}>
+    <OnboaringContext.Provider value={{ formState, formDispatch }}>
       {children}
     </OnboaringContext.Provider>
   );

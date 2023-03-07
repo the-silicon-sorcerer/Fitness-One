@@ -24,8 +24,8 @@ const TextInput = ({
   field,
   context,
 }: TextInputProps) => {
-  const { progressData } = useContext(context);
-  const currVal: string = progressData[field as keyof typeof progressData];
+  const { formState } = useContext(context);
+  const currVal: string = formState[field as keyof typeof formState];
 
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;

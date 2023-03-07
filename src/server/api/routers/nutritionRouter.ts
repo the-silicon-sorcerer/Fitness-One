@@ -1,6 +1,6 @@
 import moment from "moment";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
-import z, { string } from "zod";
+import z from "zod";
 import { TRPCError } from "@trpc/server";
 
 export const NutrtionRouter = createTRPCRouter({
@@ -24,11 +24,23 @@ export const NutrtionRouter = createTRPCRouter({
       return meals;
     }),
   addMeal: protectedProcedure
-    .input(z.object({ foodId: z.string(), servings: z.number() }))
+    .input(
+      z.object({
+        foodId: z.string(),
+        servings: z.number().max(99),
+        mealType: z.union([
+          z.literal("BRAKEFAST"),
+          z.literal("LUNCH"),
+          z.literal("DINNER"),
+          z.literal("SNACK"),
+        ]),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
       const newMeal = await ctx.prisma.meal.create({
         data: {
           servings: input.servings,
+          meal_type: input.mealType,
           foodId: input.foodId,
           userId: ctx.session.user.id,
         },

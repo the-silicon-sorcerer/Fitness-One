@@ -20,8 +20,8 @@ export interface ProgressAction<T> {
 }
 
 export interface ProgressValue<T> {
-  progressData: T;
-  progressDispatch: Dispatch<ProgressAction<T>>;
+  formState: T;
+  formDispatch: Dispatch<ProgressAction<T>>;
 }
 
 // for components utalizing progressConext
@@ -32,10 +32,10 @@ interface DispatchAction {
 }
 
 export interface ProgressContextValue {
-  progressData: {
+  formState: {
     currentPage: number;
     mutation: UseTRPCMutationResult<any, any, any, any>;
     stateSchema: z.ZodObject<any>;
   };
-  progressDispatch: Dispatch<DispatchAction>;
+  formDispatch: Dispatch<DispatchAction>;
 }

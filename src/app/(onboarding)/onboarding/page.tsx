@@ -16,14 +16,14 @@ import { DumbellIcon } from "../../../components/(svg)";
 import { NutritionIcon } from "../../../components/(svg)";
 
 const Onboarding = () => {
-  const { progressData, progressDispatch } = useContext(OnboaringContext);
-  const [payload, setPayload] = useState(progressData);
+  const { formState, formDispatch } = useContext(OnboaringContext);
+  const [payload, setPayload] = useState(formState);
 
   useEffect(() => {
-    progressDispatch({ type: "SET_DATA", payload: payload });
+    formDispatch({ type: "SET_DATA", payload: payload });
   }, [payload]);
 
-  if (progressData.currentPage === 1) {
+  if (formState.currentPage === 1) {
     return (
       <ProgressInfo
         data={[
@@ -109,7 +109,7 @@ const Onboarding = () => {
     );
   }
 
-  if (progressData.currentPage === 2) {
+  if (formState.currentPage === 2) {
     return (
       <ProgressInfo
         data={[
@@ -170,7 +170,7 @@ const Onboarding = () => {
     );
   }
 
-  if (progressData.currentPage === 3) {
+  if (formState.currentPage === 3) {
     return (
       <FinalMessage
         heading="Account Setup Complete!"

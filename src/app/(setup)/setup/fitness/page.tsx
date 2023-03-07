@@ -8,14 +8,14 @@ import FinalMessage from "../../../../components/(pages)/progressPage/finalMessa
 import { StarIcon, DateIcon } from "../../../../components/(svg)";
 
 const FitnessPage = () => {
-  const { progressData, progressDispatch } = useContext(FitnessSetupContext);
-  const [payload, setPayload] = useState(progressData);
+  const { formState, formDispatch } = useContext(FitnessSetupContext);
+  const [payload, setPayload] = useState(formState);
 
   useEffect(() => {
-    progressDispatch({ type: "SET_DATA", payload: payload });
+    formDispatch({ type: "SET_DATA", payload: payload });
   }, [payload]);
 
-  if (progressData.currentPage === 1) {
+  if (formState.currentPage === 1) {
     const options =
       payload.split === "PPL"
         ? ["Push", "Pull", "Legs", "Rest"]
@@ -155,7 +155,7 @@ const FitnessPage = () => {
     );
   }
 
-  if (progressData.currentPage === 2) {
+  if (formState.currentPage === 2) {
     return (
       <FinalMessage
         heading="Fitness Setup Complete!"

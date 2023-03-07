@@ -14,7 +14,7 @@ export const foodData: FoodObj[] = [
     carbs: 25,
     protein: 0.5,
     fats: 0.3,
-    category: "FRUIT",
+    category: "FRUITS",
   },
   {
     name: "BANANA",
@@ -22,7 +22,7 @@ export const foodData: FoodObj[] = [
     carbs: 27,
     protein: 1.3,
     fats: 0.1,
-    category: "FRUIT",
+    category: "FRUITS",
   },
   {
     name: "BLUE_BERRIES",
@@ -30,7 +30,7 @@ export const foodData: FoodObj[] = [
     carbs: 21,
     protein: 1.1,
     fats: 0.5,
-    category: "FRUIT",
+    category: "FRUITS",
   },
   {
     name: "BELL_PEPPER",
@@ -38,7 +38,7 @@ export const foodData: FoodObj[] = [
     carbs: 6,
     protein: 1,
     fats: 6,
-    category: "VEGETABLE",
+    category: "VEGETABLES",
   },
   {
     name: "BROCCOLI",
@@ -46,7 +46,7 @@ export const foodData: FoodObj[] = [
     carbs: 8,
     protein: 4,
     fats: 0.5,
-    category: "VEGETABLE",
+    category: "VEGETABLES",
   },
   {
     name: "ONION",
@@ -54,7 +54,7 @@ export const foodData: FoodObj[] = [
     carbs: 11,
     protein: 1,
     fats: 0,
-    category: "VEGETABLE",
+    category: "VEGETABLES",
   },
   {
     name: "STEAK",
@@ -62,7 +62,7 @@ export const foodData: FoodObj[] = [
     carbs: 0,
     protein: 23,
     fats: 4.5,
-    category: "MEAT",
+    category: "MEATS",
   },
   {
     name: "BACON",
@@ -70,7 +70,7 @@ export const foodData: FoodObj[] = [
     carbs: 0,
     protein: 16.5,
     fats: 16.5,
-    category: "MEAT",
+    category: "MEATS",
   },
   {
     name: "CHICKEN",
@@ -78,6 +78,6 @@ export const foodData: FoodObj[] = [
     carbs: 0,
     protein: 20.9,
     fats: 2.8,
-    category: "MEAT",
+    category: "MEATS",
   },
 ];

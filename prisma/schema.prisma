@@ -160,14 +160,22 @@ model Nutrition_Plan {
     userId   String   @unique
 }
 
+enum MealType {
+    BRAKEFAST
+    LUNCH
+    DINNER
+    SNACK
+}
+
 model Meal {
-    id       String   @id @default(cuid())
-    servings Int
-    date     DateTime @default(now())
-    food     Food     @relation(fields: [foodId], references: [id])
-    foodId   String
-    user     User     @relation(fields: [userId], references: [id])
-    userId   String
+    id        String   @id @default(cuid())
+    servings  Int
+    meal_type MealType
+    date      DateTime @default(now())
+    food      Food     @relation(fields: [foodId], references: [id])
+    foodId    String
+    user      User     @relation(fields: [userId], references: [id])
+    userId    String
 }
 
 model Food {

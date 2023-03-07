@@ -17,6 +17,7 @@ import { captializeFirst } from "../../../utils/capitalizeFirst";
 import style from "./page.module.css";
 import ButtonLarge from "../../../components/(buttons)/buttonLarge/buttonLarge.component";
 import Link from "next/link";
+import roundHundreds from "../../../utils/roundHundreds";
 
 const NutritionPage = () => {
   if (typeof window !== "undefined") window.scrollTo(0, 0);
@@ -57,9 +58,9 @@ const NutritionPage = () => {
       }
     }
     return {
-      protein: totP,
-      carbs: totC,
-      fat: totF,
+      protein: Math.round(totP),
+      carbs: Math.round(totC),
+      fat: Math.round(totF),
     };
   };
 
@@ -84,7 +85,12 @@ const NutritionPage = () => {
     return <LoadingSpinner />;
   }
 
-  if (mainState.nutritionPlan || !mainState.isLoading) {
+  if (
+    mainState.nutritionPlan ||
+    !mainState.isLoading ||
+    macros.isLoading ||
+    macros.isFetching
+  ) {
     return (
       <div className={style.container}>
         <CalendarHeader date={date} setDate={setDate} />

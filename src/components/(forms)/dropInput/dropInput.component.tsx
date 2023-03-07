@@ -31,8 +31,8 @@ const DropInput = ({
 }: DropInputProps) => {
   const [menuOpen, setMenu] = useState(false);
   const [selected, setSelected] = useState<undefined | string>(undefined);
-  const { progressData } = useContext(context);
-  const currVal = progressData[field as keyof typeof progressData];
+  const { formState } = useContext(context);
+  const currVal = formState[field as keyof typeof formState];
 
   useEffect(() => {
     options.forEach((text) => {

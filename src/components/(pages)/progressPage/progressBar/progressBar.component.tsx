@@ -12,12 +12,12 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({ events, context }: ProgressBarProps) => {
-  const { progressData } = useContext(context);
+  const { formState } = useContext(context);
 
   const createEvents = () => {
     const indicators = [];
     for (let i = 1; i <= events; i++) {
-      if (i <= progressData.currentPage) {
+      if (i <= formState.currentPage) {
         indicators.push(
           <div
             style={{ backgroundColor: "var(--bg-600)" }}

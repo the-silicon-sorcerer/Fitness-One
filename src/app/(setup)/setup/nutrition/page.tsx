@@ -8,14 +8,14 @@ import { StarIcon, FoodIcon, WaterIcon } from "../../../../components/(svg)";
 import { NutritionSetupContext } from "../../../../contexts/nutritionSetupContext/nutritionSetupContext";
 
 const NutritionPage = () => {
-  const { progressData, progressDispatch } = useContext(NutritionSetupContext);
-  const [payload, setPayload] = useState(progressData);
+  const { formState, formDispatch } = useContext(NutritionSetupContext);
+  const [payload, setPayload] = useState(formState);
 
   useEffect(() => {
-    progressDispatch({ type: "SET_DATA", payload: payload });
+    formDispatch({ type: "SET_DATA", payload: payload });
   }, [payload]);
 
-  if (progressData.currentPage === 1) {
+  if (formState.currentPage === 1) {
     return (
       <ProgressInfo
         data={[
@@ -88,7 +88,7 @@ const NutritionPage = () => {
     );
   }
 
-  if (progressData.currentPage === 2) {
+  if (formState.currentPage === 2) {
     return (
       <FinalMessage
         heading="Diet Setup Complete!"

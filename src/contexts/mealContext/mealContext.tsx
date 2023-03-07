@@ -2,22 +2,35 @@
 
 import { createContext, useReducer } from "react";
 import type { Dispatch } from "react";
+import z from "zod";
 
 interface MealContextValue {
-  mealState: MealContextState;
-  mealDispatch: Dispatch<MealAction>;
+  formState: MealContextState;
+  formDispatch: Dispatch<MealAction>;
 }
 
 export const MealContext = createContext({} as MealContextValue);
 
 type Meal = "BREAKEFAST" | "LUNCH" | "DINNER";
 
-interface MealContextState {
+export interface MealContextState {
   food?: string;
   servings?: number;
   meal?: Meal;
   category?: string;
 }
+
+export const submitSchemea = z.object({
+  food: z.string(),
+  servings: z.number().max(99),
+  meal: z.union([
+    z.literal("BRAKEFAST"),
+    z.literal("LUNCH"),
+    z.literal("DINNER"),
+    z.literal("SNACK"),
+  ]),
+  category: z.string(),
+});
 
 type MealActionType = "SET_DATA" | "SET_CATEGORY";
 
@@ -32,9 +45,9 @@ const MealReducer = (state: MealContextState, action: MealAction) => {
     case "SET_DATA":
       return {
         ...state,
-        food: payload.food,
-        servings: payload.servings,
-        meal: payload.meal,
+        food: payload.food || state.food,
+        servings: payload.servings || state.servings,
+        meal: payload.meal || state.meal,
       };
     case "SET_CATEGORY": {
       return {
@@ -51,7 +64,7 @@ const initalState: MealContextState = {
   food: undefined,
   servings: undefined,
   meal: undefined,
-  category: "RECENT",
+  category: "MEATS",
 };
 
 export const MealContextProvider = ({
@@ -59,10 +72,10 @@ export const MealContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [mealState, mealDispatch] = useReducer(MealReducer, initalState);
+  const [formState, formDispatch] = useReducer(MealReducer, initalState);
 
   return (
-    <MealContext.Provider value={{ mealState, mealDispatch }}>
+    <MealContext.Provider value={{ formState, formDispatch }}>
       {children}
     </MealContext.Provider>
   );

@@ -87,18 +87,15 @@ export const NutritionContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [progressData, progressDispatch] = useReducer(
-    nutritionReducer,
-    initalState
-  );
+  const [formState, formDispatch] = useReducer(nutritionReducer, initalState);
   const mutation = trpc.setup.nutritionPlan.useMutation();
 
   useEffect(() => {
-    progressDispatch({ type: "SET_MUTATION", payload: mutation });
+    formDispatch({ type: "SET_MUTATION", payload: mutation });
   }, []);
 
   return (
-    <NutritionSetupContext.Provider value={{ progressData, progressDispatch }}>
+    <NutritionSetupContext.Provider value={{ formState, formDispatch }}>
       {children}
     </NutritionSetupContext.Provider>
   );

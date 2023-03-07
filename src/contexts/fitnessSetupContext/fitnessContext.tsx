@@ -107,18 +107,18 @@ export const FitnessSetupContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [progressData, progressDispatch] = useReducer(
+  const [formState, formDispatch] = useReducer(
     fitnessSetupReducer,
     initalState
   );
   const mutation = trpc.setup.fitnessPlan.useMutation();
 
   useEffect(() => {
-    progressDispatch({ type: "SET_MUTATION", payload: mutation });
+    formDispatch({ type: "SET_MUTATION", payload: mutation });
   }, []);
 
   return (
-    <FitnessSetupContext.Provider value={{ progressData, progressDispatch }}>
+    <FitnessSetupContext.Provider value={{ formState, formDispatch }}>
       {children}
     </FitnessSetupContext.Provider>
   );
