@@ -6,17 +6,18 @@ import { MainContext } from "../../contexts/main/mainContext";
 import Header from "../../components/(pages)/main/dashboard/header/header.component";
 import Buffer from "../../components/(elements)/buffer/buffer.component";
 import UserInfo from "../../components/(pages)/main/dashboard/userInfo/userInfo.component";
-
-import style from "./page.module.css";
 import ContainingBlock from "../../components/(elements)/containingBlock/containingBlock.component";
 import PrecentComplete from "../../components/(pages)/main/precentComplete/precentComplete.component";
 import IconBox from "../../components/(pages)/main/IconBox/iconBox.component";
+import LoadingSpinner from "../../components/(elements)/loadingSpinner/loadingSpinner.component";
+
 import {
   NextIconSmall,
   NutritionIconSmall,
   dumbBellIconSmall,
 } from "../../components/(svg)";
-import LoadingSpinner from "../../components/(elements)/loadingSpinner/loadingSpinner.component";
+
+import style from "./page.module.css";
 
 const Dashboard = () => {
   const { mainDispatch, mainState } = useContext(MainContext);

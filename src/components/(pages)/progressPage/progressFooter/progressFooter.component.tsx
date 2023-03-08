@@ -4,9 +4,9 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import type { Context } from "react";
 
-import { ProgressContextValue } from "../../../../types/progressContext";
 import { BackIconSmall } from "../../../(svg)";
 import { NextIconSmall } from "../../../(svg)";
+import type { ProgressContextValue } from "../../../../types/progressContext";
 
 import style from "./progressFooter.module.css";
 

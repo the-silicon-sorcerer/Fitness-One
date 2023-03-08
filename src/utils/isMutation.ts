@@ -1,4 +1,4 @@
-import { UseTRPCMutationResult } from "@trpc/react-query/dist/shared";
+import type { UseTRPCMutationResult } from "@trpc/react-query/dist/shared";
 
 const isMutation = <T>(
   p: T | UseTRPCMutationResult<any, any, any, any>

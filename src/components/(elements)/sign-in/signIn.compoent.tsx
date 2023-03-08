@@ -3,6 +3,8 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+import { captializeFirst } from "../../../utils/capitalizeFirst";
+
 import style from "./signIn.module.css";
 
 interface SignInProps {
@@ -28,9 +30,7 @@ const SignIn = ({ provider, Icon, callback }: SignInProps) => {
     <button className={style.button} onClick={() => logIn()}>
       <div className={style.lable}>
         <Icon />
-        <p className="body-B-Medium">
-          {provider.charAt(0).toLocaleUpperCase().concat(provider.slice(1))}
-        </p>
+        <p className="body-B-Medium">{captializeFirst(provider)}</p>
       </div>
     </button>
   );

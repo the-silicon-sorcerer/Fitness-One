@@ -1,5 +1,7 @@
 import Link from "next/link";
+
 import BoxIcon from "../../../(elements)/boxIcon/boxIcon.component";
+
 import style from "./iconBox.module.css";
 
 interface IconBoxProps {

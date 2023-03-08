@@ -1,8 +1,9 @@
 "use client";
 
-import ProgressInfo from "../../../../components/(pages)/progressPage/progressInfo/progressInfo.component";
 import { useContext, useState, useEffect } from "react";
+
 import { FitnessSetupContext } from "../../../../contexts/fitnessSetupContext/fitnessContext";
+import ProgressInfo from "../../../../components/(pages)/progressPage/progressInfo/progressInfo.component";
 import FinalMessage from "../../../../components/(pages)/progressPage/finalMessage/finalMessage.component";
 
 import { StarIcon, DateIcon } from "../../../../components/(svg)";

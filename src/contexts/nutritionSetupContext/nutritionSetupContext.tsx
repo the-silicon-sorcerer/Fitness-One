@@ -1,14 +1,15 @@
 "use client";
 
 import { createContext, useReducer, useEffect } from "react";
-import {
+import z from "zod";
+
+import { trpc } from "../../utils/trpcProvider";
+import isMutation from "../../utils/isMutation";
+import type {
   ProgressAction,
   ProgressStateValue,
   ProgressValue,
 } from "../../types/progressContext";
-import isMutation from "../../utils/isMutation";
-import z from "zod";
-import { trpc } from "../../utils/trpcProvider";
 
 export interface NutritionPlanValues {
   calories?: number;

@@ -1,9 +1,10 @@
 import { createContext, useReducer } from "react";
-import {
+
+import isMutation from "../../utils/isMutation";
+import type {
   ProgressAction,
   ProgressStateValue,
 } from "../../types/progressContext";
-import isMutation from "../../utils/isMutation";
 
 interface SetupContextState extends ProgressStateValue {
   val: string;

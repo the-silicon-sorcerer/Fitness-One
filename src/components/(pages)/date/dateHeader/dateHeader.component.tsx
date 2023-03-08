@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import BoxIcon from "../../../(elements)/boxIcon/boxIcon.component";
-import IconBox from "../../main/IconBox/iconBox.component";
-import style from "./dateHeader.module.css";
-
-import { BackArrowIcon } from "../../../(svg)";
 import moment from "moment";
 import Link from "next/link";
 
+import { BackArrowIcon } from "../../../(svg)";
+import BoxIcon from "../../../(elements)/boxIcon/boxIcon.component";
+
+import style from "./dateHeader.module.css";
+
 const DateHeader = () => {
-  const [date, setDate] = useState(moment());
+  const [date] = useState(moment());
 
   return (
     <div className={style.container}>

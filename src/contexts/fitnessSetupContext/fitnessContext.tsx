@@ -3,13 +3,13 @@
 import { createContext, useReducer, useEffect } from "react";
 import z from "zod";
 
-import {
+import isMutation from "../../utils/isMutation";
+import { trpc } from "../../utils/trpcProvider";
+import type {
   ProgressAction,
   ProgressStateValue,
   ProgressValue,
 } from "../../types/progressContext";
-import isMutation from "../../utils/isMutation";
-import { trpc } from "../../utils/trpcProvider";
 
 type Avalible_Splits = "PPL" | "ARNOLD" | "BRO_SPLIT" | "CUSTOM";
 

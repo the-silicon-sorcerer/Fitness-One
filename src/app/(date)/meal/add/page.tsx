@@ -16,8 +16,8 @@ import { InfoIconSmall, dumbBellIconSmall } from "../../../../components/(svg)";
 import { MealContext } from "../../../../contexts/mealContext/mealContext";
 import { captializeFirst } from "../../../../utils/capitalizeFirst";
 import { trpc } from "../../../../utils/trpcProvider";
-import { MealContextState } from "../../../../contexts/mealContext/mealContext";
 import { submitSchemea } from "../../../../contexts/mealContext/mealContext";
+import type { MealContextState } from "../../../../contexts/mealContext/mealContext";
 
 import style from "./page.module.css";
 

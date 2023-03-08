@@ -1,11 +1,12 @@
 "use client";
 
-import ProgressInfo from "../../../../components/(pages)/progressPage/progressInfo/progressInfo.component";
 import { useContext, useState, useEffect } from "react";
+
+import { NutritionSetupContext } from "../../../../contexts/nutritionSetupContext/nutritionSetupContext";
+import ProgressInfo from "../../../../components/(pages)/progressPage/progressInfo/progressInfo.component";
 import FinalMessage from "../../../../components/(pages)/progressPage/finalMessage/finalMessage.component";
 
 import { StarIcon, FoodIcon, WaterIcon } from "../../../../components/(svg)";
-import { NutritionSetupContext } from "../../../../contexts/nutritionSetupContext/nutritionSetupContext";
 
 const NutritionPage = () => {
   const { formState, formDispatch } = useContext(NutritionSetupContext);

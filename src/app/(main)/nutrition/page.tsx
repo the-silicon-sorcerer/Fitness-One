@@ -17,7 +17,6 @@ import { captializeFirst } from "../../../utils/capitalizeFirst";
 import style from "./page.module.css";
 import ButtonLarge from "../../../components/(buttons)/buttonLarge/buttonLarge.component";
 import Link from "next/link";
-import roundHundreds from "../../../utils/roundHundreds";
 
 const NutritionPage = () => {
   if (typeof window !== "undefined") window.scrollTo(0, 0);
@@ -85,44 +84,37 @@ const NutritionPage = () => {
     return <LoadingSpinner />;
   }
 
-  if (
-    mainState.nutritionPlan ||
-    !mainState.isLoading ||
-    macros.isLoading ||
-    macros.isFetching
-  ) {
-    return (
-      <div className={style.container}>
-        <CalendarHeader date={date} setDate={setDate} />
-        {macros.isLoading ? (
-          <LoadingSpinner />
-        ) : (
-          <>
-            <Buffer height="119.3px" />
-            <PrecentComplete
-              bg="var(--bg-800)"
-              title={
-                date.format("YYYY-MM-DD") == moment().format("YYYY-MM-DD")
-                  ? "Todays Calorie Intake"
-                  : `${date.format("dddd MMMM Do")}`
-              }
-              override={`${totalCalories()} / ${
-                mainState.nutritionPlan.calories
-              } Cal`}
-              total={mainState.nutritionPlan.calories!}
-              input={totalCalories()}
-            />
-            <div className={style.macroContainer}>
-              {generateMacros("protein", "carbs", "fat", "protein")}
-            </div>
-            <Link href="/meal/add">
-              <ButtonLarge text="+ Add Meals" />
-            </Link>
-          </>
-        )}
-      </div>
-    );
-  }
+  return (
+    <div className={style.container}>
+      <CalendarHeader date={date} setDate={setDate} />
+      {macros.isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <Buffer height="119.3px" />
+          <PrecentComplete
+            bg="var(--bg-800)"
+            title={
+              date.format("YYYY-MM-DD") == moment().format("YYYY-MM-DD")
+                ? "Todays Calorie Intake"
+                : `${date.format("dddd MMMM Do")}`
+            }
+            override={`${totalCalories()} / ${
+              mainState.nutritionPlan.calories
+            } Cal`}
+            total={mainState.nutritionPlan.calories!}
+            input={totalCalories()}
+          />
+          <div className={style.macroContainer}>
+            {generateMacros("protein", "carbs", "fat", "protein")}
+          </div>
+          <Link href="/meal/add">
+            <ButtonLarge text="+ Add Meals" />
+          </Link>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default NutritionPage;

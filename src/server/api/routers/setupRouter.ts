@@ -1,16 +1,15 @@
 import { protectedProcedure, createTRPCRouter } from "../trpc";
-import { prisma } from "../../db";
+import { TRPCError } from "@trpc/server";
 
 import { OnboardingSchema } from "../../../contexts/onboarding/onboardingContext";
 import { FitnessSchema } from "../../../contexts/fitnessSetupContext/fitnessContext";
-import { TRPCError } from "@trpc/server";
 import { NutritionSchema } from "../../../contexts/nutritionSetupContext/nutritionSetupContext";
 
 export const setupRouter = createTRPCRouter({
   onboarding: protectedProcedure
     .input(OnboardingSchema)
     .mutation(async ({ input, ctx }) => {
-      const mutation = await prisma.user.update({
+      const mutation = await ctx.prisma.user.update({
         where: {
           id: ctx.session.user.id,
         },

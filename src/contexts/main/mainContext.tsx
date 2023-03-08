@@ -1,9 +1,10 @@
 "use client";
 
 import React, { createContext, useReducer, useEffect } from "react";
-import { FitnessPlanValues } from "../fitnessSetupContext/fitnessContext";
-import { NutritionPlanValues } from "../nutritionSetupContext/nutritionSetupContext";
+
 import { trpc } from "../../utils/trpcProvider";
+import type { FitnessPlanValues } from "../fitnessSetupContext/fitnessContext";
+import type { NutritionPlanValues } from "../nutritionSetupContext/nutritionSetupContext";
 
 type Pages = "DASHBOARD" | "FITNESS" | "NUTRITION" | "PROFILE";
 

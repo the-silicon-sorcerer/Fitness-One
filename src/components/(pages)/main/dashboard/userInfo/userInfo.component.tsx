@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
-
-import moment from "moment";
-import BoxIcon from "../../../../(elements)/boxIcon/boxIcon.component";
-import { BellIconsmall } from "../../../../(svg)";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import moment from "moment";
+
+import BoxIcon from "../../../../(elements)/boxIcon/boxIcon.component";
+
+import { BellIconsmall } from "../../../../(svg)";
 
 import style from "./userInfo.module.css";
 

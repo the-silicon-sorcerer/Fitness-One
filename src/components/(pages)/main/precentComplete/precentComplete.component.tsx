@@ -1,6 +1,7 @@
 "use cliet";
 
 import { SettingsIcon } from "../../../(svg)";
+
 import style from "./precentComplete.module.css";
 
 interface PrecentCompleteProps {

@@ -5,14 +5,14 @@ import { useContext } from "react";
 
 import { MainContext } from "../../../../contexts/main/mainContext";
 
-import style from "./navigation.module.css";
 import {
   DumbellIconLarge,
   HomeIconLarge,
-  NutritionIcon,
   NutritionIconLarge,
   UserIconLarge,
 } from "../../../(svg)";
+
+import style from "./navigation.module.css";
 
 const Navigation = () => {
   const { mainState } = useContext(MainContext);

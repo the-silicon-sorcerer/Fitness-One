@@ -1,5 +1,7 @@
 import { signOut } from "next-auth/react";
+
 import Logo from "../../../../(elements)/logo/logo.component";
+
 import { UserIcon } from "../../../../(svg)";
 import { SettingsIcon } from "../../../../(svg)";
 

@@ -1,6 +1,6 @@
 import type { Dispatch } from "react";
 import type { UseTRPCMutationResult } from "@trpc/react-query/shared";
-import z from "zod";
+import type z from "zod";
 
 export type SetPage = number;
 
